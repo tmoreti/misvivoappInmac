@@ -62,7 +62,7 @@ var id_push='';
               //})
             //.handleNotificationOpened(notificationOpenedCallback)
             .endInit();
-          
+          window.plugins.OneSignal.sendTag("tipo", "SMS");
           window.plugins.OneSignal.getIds(function(ids) {
               //console.log('getIds: ' + JSON.stringify(ids));
               //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
@@ -81,7 +81,7 @@ var id_push='';
     <br>
     <br>
     novo app mis vivo app
-    <button type="button" onclick="teste()">TESTE</button>
+    <button type="button" onclick="teste()">COM TAG</button>
     <script type="text/javascript" src="cordova.js"></script>
 </body>
 
