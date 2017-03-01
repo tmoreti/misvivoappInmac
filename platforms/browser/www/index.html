@@ -61,7 +61,7 @@ var id_push='';
                 //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
               //})
             .handleNotificationOpened(notificationOpenedCallback)
-            .endInit();
+            //.endInit();
           
             window.plugins.OneSignal.getIds(function(ids) {
               console.log('getIds: ' + JSON.stringify(ids));
