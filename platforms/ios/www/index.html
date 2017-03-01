@@ -49,7 +49,7 @@ var id_push='';
     document.addEventListener('deviceready', function () {
           // Enable to debug issues.
           // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
-          
+          alert(device.platform);
           var notificationOpenedCallback = function(jsonData) {
             alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
           };
