@@ -62,18 +62,12 @@ var id_push='';
           window.plugins.OneSignal.getIds(function(ids) {
               //console.log('getIds: ' + JSON.stringify(ids));
               //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
-              id_push=ids.userId;
+              window.localStorage.setItem("id", ids.userId);
             });
             
     }
     function teste(){
-        window.plugins.OneSignal.startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
-            .sendTag("tipo", "SMS1")
-            .getIds(function(ids) {
-              id_push=ids.userId;
-            });
-            .endInit();
-        alert(id_push);
+        alert(window.localStorage.getItem('id'));
     }
 </script>
     <br>
