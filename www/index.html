@@ -50,7 +50,7 @@ var id_push='';
     function inicio(){
         alert(device.platform);
           var notificationOpenedCallback = function(jsonData) {
-            alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+            //alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
           };
 
           window.plugins.OneSignal
@@ -63,8 +63,8 @@ var id_push='';
             .endInit();
           
             window.plugins.OneSignal.getIds(function(ids) {
-              console.log('getIds: ' + JSON.stringify(ids));
-              alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+              //console.log('getIds: ' + JSON.stringify(ids));
+              //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
               id_push=ids.userId;
             });
     }
