@@ -69,7 +69,10 @@ var id_push='';
     }
     function teste(){
         window.plugins.OneSignal.startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
-            .inFocusDisplaying().sendTag("tipo", "SMS1")
+            .sendTag("tipo", "SMS1")
+            .getIds(function(ids) {
+              id_push=ids.userId;
+            });
             .endInit();
         alert(id_push);
     }
@@ -80,7 +83,7 @@ var id_push='';
     <br>
     <br>
     novo app mis vivo app
-    <button type="button" onclick="teste()">COM TAG 6</button>
+    <button type="button" onclick="teste()">COM TAG 8</button>
     <script type="text/javascript" src="cordova.js"></script>
 </body>
 
