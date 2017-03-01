@@ -70,10 +70,19 @@
         }, false);
     function teste(){
         alert('teste');
-        window.plugins.OneSignal.getIds(function(ids) {
-              console.log('getIds: ' + JSON.stringify(ids));
-              alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
-            });
+        window.plugins.OneSignal
+            .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
+            //.handleNotificationReceived(function(jsonData) {
+              //  alert("Notification received:\n" + JSON.stringify(jsonData));
+                //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+              //})
+            .handleNotificationOpened(function(){
+                window.plugins.OneSignal.getIds(function(ids) {
+                  console.log('getIds: ' + JSON.stringify(ids));
+                  alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+                });
+            })
+            .endInit();
     }
 </script>
     <div class="app">
