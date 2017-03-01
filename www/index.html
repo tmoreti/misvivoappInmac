@@ -56,8 +56,9 @@ var id_push='';
                 //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
               //})
             //.handleNotificationOpened(notificationOpenedCallback)
+            .sendTag("tipo", "SMS3")
             .endInit();
-          window.plugins.OneSignal.sendTag("tipo", "SMS");
+
           window.plugins.OneSignal.getIds(function(ids) {
               //console.log('getIds: ' + JSON.stringify(ids));
               //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
@@ -67,7 +68,7 @@ var id_push='';
     }
     function teste(){
         window.plugins.OneSignal.startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
-            .inFocusDisplaying(window.plugins.OneSignal.sendTag("tipo", "SMS1"))
+            .inFocusDisplaying().sendTag("tipo", "SMS1")
             .endInit();
         alert(id_push);
     }
