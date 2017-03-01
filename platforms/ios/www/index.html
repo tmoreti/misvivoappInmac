@@ -51,11 +51,7 @@ var id_push='';
         //alert(device.platform);
           var notificationOpenedCallback = function(jsonData) {
             //alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-            window.plugins.OneSignal.getIds(function(ids) {
-              //console.log('getIds: ' + JSON.stringify(ids));
-              //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
-              id_push=ids.userId;
-            });
+
           };
 
           window.plugins.OneSignal
@@ -64,9 +60,14 @@ var id_push='';
               //  alert("Notification received:\n" + JSON.stringify(jsonData));
                 //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
               //})
-            .handleNotificationOpened(notificationOpenedCallback)
+            //.handleNotificationOpened(notificationOpenedCallback)
             .endInit();
           
+          window.plugins.OneSignal.getIds(function(ids) {
+              //console.log('getIds: ' + JSON.stringify(ids));
+              //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+              id_push=ids.userId;
+            });
             
     }
 
