@@ -64,10 +64,10 @@ var id_push='';
               //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
               window.localStorage.setItem("id", ids.userId);
             });
-            
+          alert(window.localStorage.getItem('id'));  
     }
     function teste(){
-        alert(window.localStorage.getItem('id'));
+        document.location.reload();
     }
 </script>
     <br>
@@ -76,7 +76,7 @@ var id_push='';
     <br>
     <br>
     novo app mis vivo app
-    <button type="button" onclick="teste()">COM TAG 8</button>
+    <button type="button" onclick="teste()">reload</button>
     <script type="text/javascript" src="cordova.js"></script>
 </body>
 
