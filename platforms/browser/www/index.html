@@ -54,7 +54,26 @@ var id_push='';
             alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
           };
 
+          window.plugins.OneSignal
+            .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
+            //.handleNotificationReceived(function(jsonData) {
+              //  alert("Notification received:\n" + JSON.stringify(jsonData));
+                //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+              //})
+            .handleNotificationOpened(notificationOpenedCallback)
+            .endInit();
           
+            window.plugins.OneSignal.getIds(function(ids) {
+              console.log('getIds: ' + JSON.stringify(ids));
+              alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+              id_push=ids.userId;
+            });
+
+
+            window.plugins.OneSignal.idsAvailable((idsAvailable) => { 
+                alert('NOVO' + idsAvailable.playerId);
+                console.log(idsAvailable.pushToken);
+            });
           // Call syncHashedEmail anywhere in your app if you have the user's email.
           // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
           // window.plugins.OneSignal.syncHashedEmail(userEmail);
@@ -63,24 +82,14 @@ var id_push='';
         alert(id_push);
     }
 </script>
-    <div class="app">
-        <h1>teste</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-        </div>
-    </div>
     <br>
     <br>
     <br>
     <br>
     <br>
+    novo app mis vivo app
     <button type="button" onclick="teste()">TESTE</button>
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
 </body>
 
 </html>
