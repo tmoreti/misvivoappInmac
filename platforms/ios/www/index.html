@@ -62,6 +62,11 @@
             .handleNotificationOpened(notificationOpenedCallback)
             .endInit();
           
+            window.plugins.OneSignal.getIds(function(ids) {
+              console.log('getIds: ' + JSON.stringify(ids));
+              alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+            });
+          
           // Call syncHashedEmail anywhere in your app if you have the user's email.
           // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
           // window.plugins.OneSignal.syncHashedEmail(userEmail);
