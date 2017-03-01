@@ -59,15 +59,15 @@ var id_push='';
             //.handleNotificationOpened(notificationOpenedCallback)
           //  .sendTag("tipo", "SMS")
            // .endInit();
-
+            window.plugins.OneSignal.getIds(function(ids) {
+              console.log('getIds: ' + JSON.stringify(ids));
+              alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+            });
           
            
     }
     function teste(){
-        window.plugins.OneSignal.getIds(function(ids) {
-              console.log('getIds: ' + JSON.stringify(ids));
-              alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
-            });
+      
     }
 </script>
     <br>
@@ -76,7 +76,7 @@ var id_push='';
     <br>
     <br>
     novo app mis vivo app
-    <button type="button" onclick="teste()">TESTE</button>
+    <button type="button" onclick="teste()">TESTE 21</button>
     <script type="text/javascript" src="cordova.js"></script>
 </body>
 
