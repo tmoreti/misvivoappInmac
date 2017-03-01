@@ -44,6 +44,7 @@
 
 <body>
 <script type="text/javascript">
+var id_push='';
     //444e35fd-5284-46a6-9e4b-f9e34629b301
     document.addEventListener('deviceready', function () {
           // Enable to debug issues.
@@ -62,27 +63,18 @@
             .handleNotificationOpened(notificationOpenedCallback)
             .endInit();
           
-            
+            window.plugins.OneSignal.getIds(function(ids) {
+              console.log('getIds: ' + JSON.stringify(ids));
+              alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+              id_push=ids.userId;
+            });
 
           // Call syncHashedEmail anywhere in your app if you have the user's email.
           // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
           // window.plugins.OneSignal.syncHashedEmail(userEmail);
         }, false);
     function teste(){
-        alert('teste');
-        window.plugins.OneSignal
-            .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
-            //.handleNotificationReceived(function(jsonData) {
-              //  alert("Notification received:\n" + JSON.stringify(jsonData));
-                //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
-              //})
-            .handleNotificationOpened(function(){
-                window.plugins.OneSignal.getIds(function(ids) {
-                  console.log('getIds: ' + JSON.stringify(ids));
-                  alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
-                });
-            })
-            .endInit();
+        alert(id_push);
     }
 </script>
     <div class="app">
