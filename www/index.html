@@ -60,14 +60,15 @@ var id_push='';
           //  .sendTag("tipo", "SMS")
            // .endInit();
             window.plugins.OneSignal.getIds(function(ids) {
-              console.log('getIds: ' + JSON.stringify(ids));
-              alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+              //console.log('getIds: ' + JSON.stringify(ids));
+              //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+                id_push=ids.userId;
             });
           
            
     }
     function teste(){
-      
+      alert(id_push);
     }
 </script>
     <br>
