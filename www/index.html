@@ -59,11 +59,11 @@ var id_push='';
             //.handleNotificationOpened(notificationOpenedCallback)
           //  .sendTag("tipo", "SMS")
            // .endInit();
-            window.plugins.OneSignal.getIds(function(ids) {
+            window.plugins.OneSignal.startInit("2bd37578-9342-4df7-a597-1a0b941a7445").getIds(function(ids) {
               //console.log('getIds: ' + JSON.stringify(ids));
               //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
                 id_push=ids.userId;
-            });
+            }).endInit();
           
            
     }
