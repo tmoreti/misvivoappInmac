@@ -55,7 +55,11 @@
 
           window.plugins.OneSignal
             .startInit("444e35fd-5284-46a6-9e4b-f9e34629b301")
-            .handleNotificationOpened(notificationOpenedCallback)
+            .handleNotificationReceived(function(jsonData) {
+                alert("Notification received:\n" + JSON.stringify(jsonData));
+                console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+              })
+            //.handleNotificationOpened(notificationOpenedCallback)
             .endInit();
           
           // Call syncHashedEmail anywhere in your app if you have the user's email.
