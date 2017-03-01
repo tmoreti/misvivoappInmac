@@ -50,16 +50,16 @@
           // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
           
           var notificationOpenedCallback = function(jsonData) {
-            console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+            alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
           };
 
           window.plugins.OneSignal
             .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
-            .handleNotificationReceived(function(jsonData) {
-                alert("Notification received:\n" + JSON.stringify(jsonData));
-                console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
-              })
-            //.handleNotificationOpened(notificationOpenedCallback)
+            //.handleNotificationReceived(function(jsonData) {
+              //  alert("Notification received:\n" + JSON.stringify(jsonData));
+                //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+              //})
+            .handleNotificationOpened(notificationOpenedCallback)
             .endInit();
           
           // Call syncHashedEmail anywhere in your app if you have the user's email.
