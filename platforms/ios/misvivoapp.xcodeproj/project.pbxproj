@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C33EC0A17B421595248641 /* CDVCompass.m in Sources */ = {isa = PBXBuildFile; fileRef = 372B4460038445139A759956 /* CDVCompass.m */; };
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
@@ -153,6 +154,7 @@
 		7955C7BF8EDD4997BEBEEF4E /* AudioToolbox.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		810DEC71D5924A49ADA23656 /* CDVFileTransfer.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVFileTransfer.m; path = "cordova-plugin-file-transfer/CDVFileTransfer.m"; sourceTree = "<group>"; };
 		83DE4420B5DF4B4DAFC834C5 /* CDVReachability.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVReachability.h; path = "cordova-plugin-network-information/CDVReachability.h"; sourceTree = "<group>"; };
+		84121C2C1E665C96005F4CF9 /* misvivoapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = misvivoapp.entitlements; path = misvivoapp/misvivoapp.entitlements; sourceTree = "<group>"; };
 		84D03C38AC4940A78C2593C2 /* CDVSound.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVSound.m; path = "cordova-plugin-media/CDVSound.m"; sourceTree = "<group>"; };
 		84E18B071E664B3D006E6574 /* misvivoapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = misvivoapp.entitlements; path = misvivoapp/misvivoapp.entitlements; sourceTree = "<group>"; };
 		889F9633DB2E41BFB5704621 /* OneSignalMobileProvision.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = OneSignalMobileProvision.h; path = "onesignal-cordova-plugin/OneSignalMobileProvision.h"; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				84121C2C1E665C96005F4CF9 /* misvivoapp.entitlements */,
 				84E18B071E664B3D006E6574 /* misvivoapp.entitlements */,
 				EB87FDF41871DAF40020F90C /* config.xml */,
 				EB87FDF31871DA8E0020F90C /* www */,
