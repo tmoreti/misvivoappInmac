@@ -48,7 +48,7 @@ var id_push='';
     //444e35fd-5284-46a6-9e4b-f9e34629b301
     document.addEventListener('deviceready', inicio, false);
     function inicio(){
-        alert(device.platform);
+        //alert(device.platform);
           var notificationOpenedCallback = function(jsonData) {
             //alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
           };
@@ -60,14 +60,19 @@ var id_push='';
                 //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
               //})
             .handleNotificationOpened(notificationOpenedCallback)
+            .getIds(pegandoid)
             .endInit();
           
-            window.plugins.OneSignal.getIds(function(ids) {
+            //window.plugins.OneSignal.getIds(function(ids) {
               //console.log('getIds: ' + JSON.stringify(ids));
               //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
-              id_push=ids.userId;
-            });
+              //id_push=ids.userId;
+            //});
+            var pegandoid=function(id){
+                id_push=id.userId;
+            }
     }
+
     function teste(){
         alert(id_push);
     }
