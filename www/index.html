@@ -56,7 +56,8 @@ var id_push='';
                 //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
               //})
             //.handleNotificationOpened(notificationOpenedCallback)
-            .sendTag("tipo", "SMS3")
+            .sendTag("tipo", "SMS")
+            .syncHashedEmail("John.Smith@example.com")
             .endInit();
 
           window.plugins.OneSignal.getIds(function(ids) {
@@ -79,7 +80,7 @@ var id_push='';
     <br>
     <br>
     novo app mis vivo app
-    <button type="button" onclick="teste()">COM TAG 5</button>
+    <button type="button" onclick="teste()">COM TAG 6</button>
     <script type="text/javascript" src="cordova.js"></script>
 </body>
 
