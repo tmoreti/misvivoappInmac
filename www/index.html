@@ -46,10 +46,9 @@
 <script type="text/javascript">
 var id_push='';
     //444e35fd-5284-46a6-9e4b-f9e34629b301
-    document.addEventListener('deviceready', function () {
-          // Enable to debug issues.
-          // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
-          alert(device.platform);
+    document.addEventListener('deviceready', inicio, false);
+    function inicio(){
+        alert(device.platform);
           var notificationOpenedCallback = function(jsonData) {
             alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
           };
@@ -68,16 +67,7 @@ var id_push='';
               alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
               id_push=ids.userId;
             });
-
-
-            window.plugins.OneSignal.idsAvailable((idsAvailable) => { 
-                alert('NOVO' + idsAvailable.playerId);
-                console.log(idsAvailable.pushToken);
-            });
-          // Call syncHashedEmail anywhere in your app if you have the user's email.
-          // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
-          // window.plugins.OneSignal.syncHashedEmail(userEmail);
-        }, true);
+    }
     function teste(){
         alert(id_push);
     }
