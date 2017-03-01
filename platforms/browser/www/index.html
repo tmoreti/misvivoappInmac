@@ -54,26 +54,7 @@ var id_push='';
             alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
           };
 
-          window.plugins.OneSignal
-            .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
-            //.handleNotificationReceived(function(jsonData) {
-              //  alert("Notification received:\n" + JSON.stringify(jsonData));
-                //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
-              //})
-            .handleNotificationOpened(notificationOpenedCallback)
-            //.endInit();
           
-            window.plugins.OneSignal.getIds(function(ids) {
-              console.log('getIds: ' + JSON.stringify(ids));
-              alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
-              id_push=ids.userId;
-            });
-
-
-            window.plugins.OneSignal.idsAvailable((idsAvailable) => { 
-                alert('NOVO' + idsAvailable.playerId);
-                console.log(idsAvailable.pushToken);
-            });
           // Call syncHashedEmail anywhere in your app if you have the user's email.
           // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
           // window.plugins.OneSignal.syncHashedEmail(userEmail);
