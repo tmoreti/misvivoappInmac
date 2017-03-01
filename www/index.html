@@ -46,24 +46,23 @@ var id_push='';
     document.addEventListener('deviceready', inicio, false);
     function inicio(){
         //alert(device.platform);
-        alert(window.localStorage.getItem('id')); 
-          var notificationOpenedCallback = function(jsonData) {
+       // alert(window.localStorage.getItem('id')); 
+         // var notificationOpenedCallback = function(jsonData) {
             //alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-          };
-          window.plugins.OneSignal
-            .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
+         // };
+          //window.plugins.OneSignal
+          //  .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
             //.handleNotificationReceived(function(jsonData) {
               //  alert("Notification received:\n" + JSON.stringify(jsonData));
                 //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
               //})
             //.handleNotificationOpened(notificationOpenedCallback)
-            .sendTag("tipo", "SMS")
-            .endInit();
+          //  .sendTag("tipo", "SMS")
+           // .endInit();
 
           window.plugins.OneSignal.getIds(function(ids) {
-              //console.log('getIds: ' + JSON.stringify(ids));
-              //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
-              window.localStorage.setItem("id", ids.userId);
+              console.log('getIds: ' + JSON.stringify(ids));
+              alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
             });
            
     }
