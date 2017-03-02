@@ -46,9 +46,9 @@ var id_push='';
     function inicio(){
         //alert(device.platform);
        // alert(window.localStorage.getItem('id')); 
-         // var notificationOpenedCallback = function(jsonData) {
-          //  alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-          //};
+          var notificationOpenedCallback = function(jsonData) {
+            alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+          };
           window.plugins.OneSignal
             .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
             //.handleNotificationReceived(function(jsonData) {
