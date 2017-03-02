@@ -56,14 +56,14 @@ var id_push='';
                 //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
               //})
             .handleNotificationOpened(notificationOpenedCallback)
-            .sendTag("tipo", "SMS1")
             .endInit();
+        
             window.plugins.OneSignal.getIds(function(ids) {
               //console.log('getIds: ' + JSON.stringify(ids));
               //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
                 id_push=ids.userId;
             });
-          
+          window.plugins.OneSignal.sendTag("tipo", "SMS1");
            
     }
     function teste(){
