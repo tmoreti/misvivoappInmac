@@ -22,7 +22,7 @@
     <meta charset="utf-8" />
     <!--<meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />-->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height",  />
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
     <!--<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />-->
     <!-- Good default declaration:
@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    
+<script src="js/load.js"></script>
 <body>
 <script type="text/javascript">
 var id_push='';
@@ -75,18 +75,23 @@ var id_push='';
        window.plugins.OneSignal.sendTag("tipo", "SMS2");
     }
 </script>
-        <header data-role="header" data-position="fixed">
-            <h1>Mis Vivo App</h1>
-        </header>
-        <footer data-role="footer" data-position="fixed">
-            <div data-role="navbar" data-iconpos="top">
-                <ul>
-                    <li><a href="a.html" class="ui-btn-active ui-state-persist" data-icon="gear" >Seu Número</a></li>
-                    <li><a href="b.html" data-icon="home">Produtos</a></li>
-                </ul>
-            </div>
-        </footer>
+
+    <div data-role="page" id="cadastro">
+        <header data-role="header" data-position="fixed"></header>
+        <div data-role="content">
+            <h1>Cadastro</h1>
+        </div>
+         <footer data-role="footer" data-position="fixed"></footer>
+    </div>
+    <div data-role="page" id="indicadores">
+        <header data-role="header" data-position="fixed"></header>
+        <div data-role="content">
+            <h1>Indicadores</h1>
+        </div>
+        <footer data-role="footer" data-position="fixed"></footer>
+    </div>
     <script type="text/javascript" src="cordova.js"></script>
+   
 </body>
 
 </html>
