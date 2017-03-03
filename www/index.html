@@ -20,22 +20,14 @@
 
 <head>
     <meta charset="utf-8" />
-    <!--<meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />-->
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height",  />
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <!--<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />-->
-    <!-- Good default declaration:
-    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-        * Enable inline JS: add 'unsafe-inline' to default-src
-        * Enable eval(): add 'unsafe-eval' to default-src
-    * Create your own at http://cspisawesome.com
-    -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
-
-    <title>Hello World</title>
+    <title>Mis Vivo App</title>
+    <link rel="stylesheet" href="css/jquery.mobile.external-png-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.icons-1.4.5.mincss" />
+    <link rel="stylesheet" href="css/jquery.mobile.inline-png-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.inline-svg-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.theme-1.4.5.min.css" />
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
 </head>
     
@@ -44,7 +36,6 @@
 <body>
 <script type="text/javascript">
 var id_push='';
-    //444e35fd-5284-46a6-9e4b-f9e34629b301
     document.addEventListener('deviceready', inicio, false);
     function inicio(){
         //alert(device.platform);
@@ -73,18 +64,26 @@ var id_push='';
       alert(id_push);
        window.plugins.OneSignal.sendTag("tipo", "SMS2");
     }
+    function solicitarAcesso(email){
+        alert(email);
+    }
 </script>
 
     <div data-role="page" id="cadastro">
-        <header data-role="header" data-position="fixed"></header>
+        <header data-role="header" data-position="fixed" data-theme="b"></header>
         <div data-role="content">
-            <h2>Cadastro</h2>
+            <h3>
+                <div class="ui-grid-b">
+                    <div class="ui-block-a" style="text-align: left;">Solicitar acesso</div>
+                </div>
+            </h3>
             <div data-role="fieldcontain" class="ui-hide-label">
                 <label for="username">E-mail:</label>
                 <input type="text" name="email" id="email" value="" placeholder="email@telefonica.com"/>
+                <a href="#" onclick="solicitarAcesso($('#email').val())" class="ui-shadow ui-btn ui-corner-all">Enviar</a>
             </div>
         </div>
-         <footer data-role="footer" data-position="fixed"></footer>
+         <footer data-role="footer" data-position="fixed" data-theme="b"></footer>
     </div>
     <div data-role="page" id="indicadores">
         <header data-role="header" data-position="fixed"></header>
