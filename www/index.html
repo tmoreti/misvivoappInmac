@@ -37,7 +37,11 @@
 
     <title>Hello World</title>
 </head>
-
+    
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    
 <body>
 <script type="text/javascript">
 var id_push='';
@@ -71,8 +75,17 @@ var id_push='';
        window.plugins.OneSignal.sendTag("tipo", "SMS2");
     }
 </script>
-    New app
-    <button type="button" onclick="teste()">TESTE 22</button>
+    <header data-role="header">
+        <h1>Mis Vivo App</h1>
+    </header>
+    <footer data-role="footer">
+        <div data-role="navbar" data-iconpos="top" data-theme="b">
+            <ul>
+                <li><a href="a.html" class="ui-btn-active ui-state-persist" data-icon="gear" >Seu Número</a></li>
+                <li><a href="b.html" data-icon="home">Produtos</a></li>
+            </ul>
+        </div>
+    </footer>
     <script type="text/javascript" src="cordova.js"></script>
 </body>
 
