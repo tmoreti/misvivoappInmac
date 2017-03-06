@@ -54,11 +54,9 @@ var id_push='';
         
             window.plugins.OneSignal.getIds(function(ids) {
               //console.log('getIds: ' + JSON.stringify(ids));
-              //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+                alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
                 id_push=ids.userId;
             });
-          window.plugins.OneSignal.sendTag("fl_autorizado", "0");
-           
     }
     function inicio(){
         verificarCadastro();
@@ -82,7 +80,9 @@ var id_push='';
             if(html==0){
                 $.mobile.changePage("#cadastro");
             }else{
-                $.mobile.changePage("")
+                $.mobile.changePage("#logado");
+                chamadaOnesignal();
+
             }
         });
     }
@@ -101,8 +101,9 @@ var id_push='';
                 idPush: id_push
                 }
         }).done(function(html) {
-          alert(html);
+          alert('ultimo' + html);
           localStorage.setItem('email',email);
+          window.plugins.OneSignal.sendTag("fl_autorizado", "0");
         });
     }
 </script>
