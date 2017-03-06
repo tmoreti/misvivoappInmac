@@ -63,7 +63,6 @@ var id_push='';
         verificarCadastro();
     }
     function teste(){
-      alert(id_push);
        window.plugins.OneSignal.sendTag("tipo", "SMS2");
     }
     function verificarCadastro(){
@@ -77,19 +76,15 @@ var id_push='';
                 email: email
             }
         }).done(function(html){
-            //alert(html);
             if(html==0){
                 $.mobile.changePage("#cadastro");
             }else{
+                window.plugins.OneSignal.sendTag("fl_autorizado", "1");
                 $.mobile.changePage("#logado");
-                chamadaOnesignal();
-
             }
         });
     }
     function solicitarAcesso(email){
-        
-        alert(id_push);
         $.ajax({
           url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
           dataType: "html",
@@ -102,9 +97,10 @@ var id_push='';
                 idPush: id_push
                 }
         }).done(function(html) {
-          alert('ultimo' + html);
           localStorage.setItem('email',email);
           window.plugins.OneSignal.sendTag("fl_autorizado", "0");
+          navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK')
+          $('#email').val('');
         });
     }
 </script>
@@ -122,6 +118,22 @@ var id_push='';
                 <input type="text" name="email" id="email" value="" placeholder="email@telefonica.com"/>
                 <a href="#" onclick="solicitarAcesso($('#email').val())" class="ui-shadow ui-btn ui-corner-all">Enviar</a>
             </div>
+        </div>
+    </div>
+    <div data-role="page" id="logado">
+        <header data-role="header" data-position="fixed" data-theme="b"></header>
+        <div data-role="content">
+            <h3>
+                <div>
+                    <div style="text-align: left;"><h3>Seu acesso já foi liberado para receber as informações</h3></div>
+                </div>
+            </h3>
+            <div data-role="fieldcontain" class="ui-hide-label">
+                <label for="username">E-mail:</label>
+                <input type="text" name="email" id="email" value="" placeholder="email@telefonica.com"/>
+                <a href="#" onclick="solicitarAcesso($('#email').val())" class="ui-shadow ui-btn ui-corner-all">Enviar</a>
+            </div>
+            <footer data-role="header" data-position="fixed" data-theme="b"></footer>
         </div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
