@@ -2,13 +2,35 @@
 <widget id="br.com.misvivoapp.misvivoapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>misvivoapp</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        App para uso interno da vivo.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="thiago.moreti@telefonica.com" href="http://www.misvivoapp.com.br">
+        Thiago Moreti
     </author>
     <content src="index.html" />
     <icon src="icon.png" />
+    <icon platform="android" qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
+    <icon platform="android" qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
+    <icon platform="android" qualifier="hdpi" src="www/res/icon/android/icon-72-hdpi.png" />
+    <icon platform="android" qualifier="xhdpi" src="www/res/icon/android/icon-96-xhdpi.png" />
+    <icon platform="android" qualifier="xxhdpi" src="www/res/icon/android/icon-144-xxhdpi.png" />
+    <icon height="180" platform="ios" src="www/res/icon/ios/icon-60-3x.png" width="180" />
+    <icon height="60" platform="ios" src="www/res/icon/ios/icon-60.png" width="60" />
+    <icon height="120" platform="ios" src="www/res/icon/ios/icon-60-2x.png" width="120" />
+    <icon height="76" platform="ios" src="www/res/icon/ios/icon-76.png" width="76" />
+    <icon height="152" platform="ios" src="www/res/icon/ios/icon-76-2x.png" width="152" />
+    <icon height="29" platform="ios" src="www/res/icon/ios/icon-small.png" width="29" />
+    <icon height="58" platform="ios" src="www/res/icon/ios/icon-small-2x.png" width="58" />
+    <icon height="40" platform="ios" src="www/res/icon/ios/icon-40.png" width="40" />
+    <icon height="80" platform="ios" src="www/res/icon/ios/icon-40-2x.png" width="80" />
+    <icon height="120" platform="ios" src="www/res/icon/ios/icon-40-3x.png" width="120" />
+    <splash height="480" platform="ios" src="www/res/screen/ios/screen-iphone-portrait.png" width="320" />
+    <splash height="960" platform="ios" src="www/res/screen/ios/screen-iphone-portrait-2x.png" width="640" />
+    <splash height="1136" platform="ios" src="www/res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" />
+    <splash height="1334" platform="ios" src="www/res/screen/ios/screen-iphone-portrait-667h.png" width="750" />
+    <splash height="2208" platform="ios" src="www/res/screen/ios/screen-iphone-portrait-736h.png" width="1242" />
+    <splash height="1024" platform="ios" src="www/res/screen/ios/screen-ipad-portrait.png" width="768" />
+    <splash height="2048" platform="ios" src="www/res/screen/ios/screen-ipad-portrait-2x.png" width="1536" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -16,18 +38,12 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <splash density="land-ldpi" src="www/res/screen/android/drawable-land-ldpi-screen.png" />
-    <splash density="land-mdpi" src="www/res/screen/android/drawable-land-mdpi-screen.png" />
-    <splash density="land-hdpi" src="www/res/screen/android/drawable-land-hdpi-screen.png" />
-    <splash density="land-xhdpi" src="www/res/screen/android/drawable-land-xhdpi-screen.png" />
-    <splash density="land-xxhdpi" src="www/res/screen/android/drawable-land-xxhdpi-screen.png" />
-    <splash density="land-xxxhdpi" src="www/res/screen/android/drawable-land-xxxhdpi-screen.png" />
-    <splash density="port-ldpi" src="www/res/screen/android/drawable-port-ldpi-screen.png" />
-    <splash density="port-mdpi" src="www/res/screen/android/drawable-port-mdpi-screen.png" />
-    <splash density="port-hdpi" src="www/res/screen/android/drawable-port-hdpi-screen.png" />
-    <splash density="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />
-    <splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
-    <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
+    <splash density="port-ldpi" src="www/res/screen/android/screen-ldpi-portrait.png" />
+    <splash density="port-mdpi" src="www/res/screen/android/screen-mdpi-portrait.png" />
+    <splash density="port-hdpi" src="www/res/screen/android/screen-hdpi-portrait.png" />
+    <splash density="port-xhdpi" src="www/res/screen/android/screen-xhdpi-portrait.png" />
+    <splash density="port-xxhdpi" src="www/res/screen/android/screen-xxhdpi-portrait.png" />
+    <splash density="port-xxxhdpi" src="www/res/screen/android/screen-xxxhdpi-portrait.png" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="StatusBarOverlaysWebView" value="false" />
@@ -35,4 +51,5 @@
     <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
+    <preference name="orientation" value="portrait" />
 </widget>

@@ -33,7 +33,7 @@
     
 
 
-<body style="display:none">
+<body>
 <script type="text/javascript">
 var id_push='';
     document.addEventListener('deviceready', inicio, false);
@@ -62,9 +62,6 @@ var id_push='';
         chamadaOnesignal();
         verificarCadastro();
     }
-    function teste(){
-       window.plugins.OneSignal.sendTag("tipo", "SMS2");
-    }
     function verificarCadastro(){
         var email=localStorage.getItem('email');
         $.ajax({
@@ -74,15 +71,20 @@ var id_push='';
             data:{
                 tipo: 'verificar',
                 email: email
-            }
+            },
+            beforeSend: function() {
+                    // This callback function will trigger before data is sent
+                    $.mobile.loading('show', {theme:"a", text:"Carregando...", textonly:true, textVisible: true}); // This will show AJAX spinner
+                },
         }).done(function(html){
+            $.mobile.loading('hide');
             if(html==0){
                 $.mobile.changePage("#cadastro");
-                $('body').fadeIn('fast');
+                //$('body').fadeIn('fast');
             }else{
                 window.plugins.OneSignal.sendTag("fl_autorizado", "1");
                 $.mobile.changePage("#logado");
-                $('body').fadeIn('fast');
+                //$('body').fadeIn('fast');
             }
         });
     }

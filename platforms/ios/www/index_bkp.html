@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height",  />
+    <title>Mis Vivo App</title>
+    <link rel="stylesheet" href="css/jquery.mobile.external-png-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.icons-1.4.5.mincss" />
+    <link rel="stylesheet" href="css/jquery.mobile.inline-png-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.inline-svg-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.theme-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+</head>
+    
+
+
+<body>
+<script type="text/javascript">
+var id_push='';
+    document.addEventListener('deviceready', inicio, false);
+    function inicio(){
+        //alert(device.platform);
+       // alert(window.localStorage.getItem('id')); 
+          var notificationOpenedCallback = function(jsonData) {
+            alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+          };
+          window.plugins.OneSignal
+            .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
+            //.handleNotificationReceived(function(jsonData) {
+                //alert("Notification received:\n" + JSON.stringify(jsonData));
+                //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+              //})
+            .handleNotificationOpened(notificationOpenedCallback)
+            .endInit();
+        
+            window.plugins.OneSignal.getIds(function(ids) {
+              //console.log('getIds: ' + JSON.stringify(ids));
+              //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+                id_push=ids.userId;
+            });
+          window.plugins.OneSignal.sendTag("tipo", "SMS1");
+           
+    }
+    function teste(){
+      alert(id_push);
+       window.plugins.OneSignal.sendTag("tipo", "SMS2");
+    }
+    function solicitarAcesso(email){
+        alert(email);
+    }
+</script>
+
+    <div data-role="page" id="cadastro">
+        <header data-role="header" data-position="fixed" data-theme="b"></header>
+        <div data-role="content">
+            <h3>
+                <div class="ui-grid-b">
+                    <div class="ui-block-a" style="text-align: left;">Solicitar acesso</div>
+                </div>
+            </h3>
+            <div data-role="fieldcontain" class="ui-hide-label">
+                <label for="username">E-mail:</label>
+                <input type="text" name="email" id="email" value="" placeholder="email@telefonica.com"/>
+                <a href="#" onclick="solicitarAcesso($('#email').val())" class="ui-shadow ui-btn ui-corner-all">Enviar</a>
+            </div>
+        </div>
+         <footer data-role="footer" data-position="fixed" data-theme="b"></footer>
+    </div>
+    <div data-role="page" id="indicadores">
+        <header data-role="header" data-position="fixed"></header>
+        <div data-role="content">
+            <h1>Indicadores</h1>
+        </div>
+        <footer data-role="footer" data-position="fixed"></footer>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+   
+</body>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/load.js"></script>
+</html>
