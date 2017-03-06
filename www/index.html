@@ -74,13 +74,18 @@ var id_push='';
             data:{
                 tipo: 'verificar',
                 email: email
+            },
+            beforeSend: function(){
+                $('body').hide();
             }
         }).done(function(html){
             if(html==0){
                 $.mobile.changePage("#cadastro");
+                $('body').fadeIn('fast');
             }else{
                 window.plugins.OneSignal.sendTag("fl_autorizado", "1");
                 $.mobile.changePage("#logado");
+                $('body').fadeIn('fast');
             }
         });
     }
