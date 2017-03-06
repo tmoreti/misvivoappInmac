@@ -60,7 +60,7 @@ var id_push='';
     }
     function inicio(){
         chamadaOnesignal();
-        //verificarCadastro();
+        verificarCadastro();
     }
     function teste(){
        window.plugins.OneSignal.sendTag("tipo", "SMS2");
@@ -115,12 +115,10 @@ var id_push='';
             <h3>
                 Carregando...
             </h3>
-            <script type="text/javascript">
-                alert('teste');
-                verificarCadastro();
-            </script>
         </div>
-        
+        <script type="text/javascript">
+            document.addEventListener('deviceready', inicio, false);
+        </script>
     </div>
 
 
