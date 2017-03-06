@@ -40,16 +40,16 @@ var id_push='';
     function chamadaOnesignal(){
         //alert(device.platform);
        // alert(window.localStorage.getItem('id')); 
-          var notificationOpenedCallback = function(jsonData) {
-            alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-          };
+         // var notificationOpenedCallback = function(jsonData) {
+           // alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+          //};
           window.plugins.OneSignal
             .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
             //.handleNotificationReceived(function(jsonData) {
                 //alert("Notification received:\n" + JSON.stringify(jsonData));
                 //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
               //})
-            .handleNotificationOpened(notificationOpenedCallback)
+            //.handleNotificationOpened(notificationOpenedCallback)
             .endInit();
         
             window.plugins.OneSignal.getIds(function(ids) {
@@ -109,8 +109,8 @@ var id_push='';
         <header data-role="header" data-position="fixed" data-theme="b"></header>
         <div data-role="content">
             <h3>
-                <div class="ui-grid-b">
-                    <div class="ui-block-a" style="text-align: left;">Solicitar acesso</div>
+                <div>
+                    <div style="text-align: left;">Solicitar acesso</div>
                 </div>
             </h3>
             <div data-role="fieldcontain" class="ui-hide-label">
