@@ -54,11 +54,12 @@ var id_push='';
         
             window.plugins.OneSignal.getIds(function(ids) {
               //console.log('getIds: ' + JSON.stringify(ids));
-                alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+                //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
                 id_push=ids.userId;
             });
     }
     function inicio(){
+        chamadaOnesignal();
         verificarCadastro();
     }
     function teste(){
@@ -87,7 +88,7 @@ var id_push='';
         });
     }
     function solicitarAcesso(email){
-        chamadaOnesignal();
+        
         alert(id_push);
         $.ajax({
           url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
