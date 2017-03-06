@@ -38,6 +38,7 @@
 var id_push='';
     document.addEventListener('deviceready', inicio, false);
     function chamadaOnesignal(){
+        var id_push='';
         //alert(device.platform);
        // alert(window.localStorage.getItem('id')); 
          // var notificationOpenedCallback = function(jsonData) {
@@ -52,10 +53,10 @@ var id_push='';
             //.handleNotificationOpened(notificationOpenedCallback)
             .endInit();
         
-            window.plugins.OneSignal.getIds(function(ids) {
+            id_push=window.plugins.OneSignal.getIds(function(ids) {
               //console.log('getIds: ' + JSON.stringify(ids));
               //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
-                id_push=ids.userId;
+                return ids.userId;
             });
           window.plugins.OneSignal.sendTag("fl_autorizado", "0");
            
