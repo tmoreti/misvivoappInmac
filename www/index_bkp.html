@@ -37,7 +37,7 @@
 <script type="text/javascript">
 var id_push='';
     document.addEventListener('deviceready', inicio, false);
-    function chamadaOnesignal(){
+    function inicio(){
         //alert(device.platform);
        // alert(window.localStorage.getItem('id')); 
           var notificationOpenedCallback = function(jsonData) {
@@ -60,37 +60,12 @@ var id_push='';
           window.plugins.OneSignal.sendTag("tipo", "SMS1");
            
     }
-    function inicio(){
-        verificarCadastro();
-    }
     function teste(){
       alert(id_push);
        window.plugins.OneSignal.sendTag("tipo", "SMS2");
     }
-    function verificarCadastro(){
-        var email=localStorage.getItem('email');
-        $.ajax({
-            url:'http://www.livemusicapp.com.br/misvivoapp/usuarios.php',
-            method: 'POST',
-            dataType: 'html',
-            data:{
-                tipo: 'verificar',
-                email: email
-            }
-        }).done(function(html){
-            alert(html);
-        });
-    }
     function solicitarAcesso(email){
-        $.ajax({
-          url: "footer.html",
-          dataType: "json",
-          data: {
-                email: email
-                }
-        }).done(function(html) {
-          $('footer').html(html);
-        });
+        alert(email);
     }
 </script>
 
@@ -108,6 +83,14 @@ var id_push='';
                 <a href="#" onclick="solicitarAcesso($('#email').val())" class="ui-shadow ui-btn ui-corner-all">Enviar</a>
             </div>
         </div>
+         <footer data-role="footer" data-position="fixed" data-theme="b"></footer>
+    </div>
+    <div data-role="page" id="indicadores">
+        <header data-role="header" data-position="fixed"></header>
+        <div data-role="content">
+            <h1>Indicadores</h1>
+        </div>
+        <footer data-role="footer" data-position="fixed"></footer>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
    
