@@ -99,6 +99,7 @@ var id_push='';
         }).done(function(html) {
           localStorage.setItem('email',email);
           window.plugins.OneSignal.sendTag("fl_autorizado", "0");
+          window.plugins.OneSignal.sendTag("email", email);
           navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK')
           $('#email').val('');
         });
