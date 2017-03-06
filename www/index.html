@@ -57,7 +57,7 @@ var id_push='';
               //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
                 id_push=ids.userId;
             });
-          window.plugins.OneSignal.sendTag("tipo", "SMS1");
+          window.plugins.OneSignal.sendTag("fl_autorizado", "0");
            
     }
     function inicio(){
@@ -82,14 +82,19 @@ var id_push='';
         });
     }
     function solicitarAcesso(email){
+        chamadaOnesignal();
         $.ajax({
-          url: "footer.html",
-          dataType: "json",
+          url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
+          dataType: "html",
           data: {
-                email: email
+                tipo: 'cadastrar',
+                email: email,
+                fl_autorizado:0,
+                idPush: id_push
                 }
         }).done(function(html) {
-          $('footer').html(html);
+          alert(html);
+          localStorage.setItem('email',email);
         });
     }
 </script>
