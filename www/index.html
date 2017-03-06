@@ -78,7 +78,12 @@ var id_push='';
                 email: email
             }
         }).done(function(html){
-            alert(html);
+            //alert(html);
+            if(html==0){
+                $.mobile.changePage("#cadastro");
+            }else{
+                $.mobile.changePage("")
+            }
         });
     }
     function solicitarAcesso(email){
@@ -86,6 +91,7 @@ var id_push='';
         $.ajax({
           url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
           dataType: "html",
+          method: 'POST',
           data: {
                 tipo: 'cadastrar',
                 email: email,
