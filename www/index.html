@@ -40,21 +40,22 @@ var id_push='';
     function chamadaOnesignal(){
         //alert(device.platform);
        // alert(window.localStorage.getItem('id')); 
-          var notificationOpenedCallback = function(jsonData) {
-            alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-          };
+          //var notificationOpenedCallback = function(jsonData) {
+            //alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+          //};
           window.plugins.OneSignal
             .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
             //.handleNotificationReceived(function(jsonData) {
                 //alert("Notification received:\n" + JSON.stringify(jsonData));
                 //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
               //})
-            .handleNotificationOpened(notificationOpenedCallback)
+            //.handleNotificationOpened(notificationOpenedCallback)
             .endInit();
         
             window.plugins.OneSignal.getIds(function(ids) {
               //console.log('getIds: ' + JSON.stringify(ids));
               //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
+                alert('dentro da funcao ' + ids.userId);
                 id_push=ids.userId;
             });
           window.plugins.OneSignal.sendTag("fl_autorizado", "0");
@@ -64,7 +65,7 @@ var id_push='';
         verificarCadastro();
     }
     function teste(){
-      alert(id_push);
+        alert(id_push);
        window.plugins.OneSignal.sendTag("tipo", "SMS2");
     }
     function verificarCadastro(){
@@ -88,7 +89,7 @@ var id_push='';
     }
     function solicitarAcesso(email){
         chamadaOnesignal();
-        alert(id_push);
+        alert('variavel ' + id_push);
         $.ajax({
           url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
           dataType: "html",
