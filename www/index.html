@@ -33,7 +33,7 @@
     
 
 
-<body>
+<body style="display:none">
 <script type="text/javascript">
 var id_push='';
     document.addEventListener('deviceready', inicio, false);
@@ -74,9 +74,6 @@ var id_push='';
             data:{
                 tipo: 'verificar',
                 email: email
-            },
-            beforeSend: function(){
-                $('body').hide();
             }
         }).done(function(html){
             if(html==0){
