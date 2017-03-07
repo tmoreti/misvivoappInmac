@@ -37,7 +37,7 @@
 <body>
 <script type="text/javascript">
 var id_push='';
-var tags='';
+var tag='';
     document.addEventListener('deviceready', inicio, false);
     function chamadaOnesignal(){
         //alert(device.platform);
@@ -62,7 +62,7 @@ var tags='';
             window.plugins.OneSignal.getTags(function(tags) {
               //tags=JSON.stringify(tags);
               //loadTagsPush();
-              alert(tags.SMS);
+              tag=tags;
             });
     }
     function inicio(){
