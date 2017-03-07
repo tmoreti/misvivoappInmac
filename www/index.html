@@ -59,7 +59,11 @@ var tag='';
                 //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
                 id_push=ids.userId;
             });
-            
+            window.plugins.OneSignal.getTags(function(tags) {
+              //tags=JSON.stringify(tags);
+              //loadTagsPush();
+              alert(tags.length);
+            });
     }
     function inicio(){
         chamadaOnesignal();
@@ -118,12 +122,8 @@ var tag='';
         //alert(t[item]);
     }
     function loadTagsPush(){
-        window.plugins.OneSignal.getTags(function(tags) {
-          //tags=JSON.stringify(tags);
-          //loadTagsPush();
-          alert(tags.length);
-        });
-}
+        
+    }
 </script>
     
 
