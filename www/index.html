@@ -60,9 +60,10 @@ var tag='';
                 id_push=ids.userId;
             });
             window.plugins.OneSignal.getTags(function(tags) {
-              //tags=JSON.stringify(tags);
+              tags=JSON.stringify(tags);
               //loadTagsPush();
-              alert(tags.length);
+              //alert(tags.length);
+              tag=tags;
             });
     }
     function inicio(){
@@ -122,7 +123,7 @@ var tag='';
         //alert(t[item]);
     }
     function loadTagsPush(){
-        
+        alert(tag);
     }
 </script>
     
