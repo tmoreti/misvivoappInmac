@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
     <link rel="stylesheet" href="css/jquery.mobile.theme-1.4.5.min.css" />
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/estilos.css" />
 </head>
     
 
@@ -99,9 +100,9 @@ var id_push='';
                 }
         }).done(function(html) {
             localStorage.setItem('email',email);
+            localStorage.setItem('idPush',idPush);
             window.plugins.OneSignal.sendTag("fl_autorizado", "0");
             window.plugins.OneSignal.sendTag("email", email);
-            window.plugins.OneSignal.sendTag("idPush", id_push);
             navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK')
             verificarCadastro()
         });
@@ -113,11 +114,10 @@ var id_push='';
         <header data-role="header" data-position="fixed" data-theme="b"></header>
         <div data-role="content">
             <h3>
-                <div>
-                    <div style="text-align: left;">Carregando as informações..</div>
+                <div class="ui-center">
+                    <div style="text-align: center;">Carregando as informações..</div>
                 </div>
             </h3>
-            
         </div>
     </div>
 
@@ -165,7 +165,7 @@ var id_push='';
         <div data-role="content">
             <h3>
                 <div>
-                    <div style="text-align: left;">Seu acesso já foi liberado para receber as informações</div>
+                    <div style="text-align: center;" class="ui-center">Seu acesso já foi liberado para receber as informações</div>
                 </div>
             </h3>
             
