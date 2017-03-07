@@ -200,22 +200,25 @@ var tags='';
                     <div style="text-align: left;">Selecione:</div>
                 </div>
             </h3>
-            <form>
-                <div data-role="fieldcontain">
-                    <label for="SMS">SMS:</label>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">SMS</div>
+                <div class="ui-block-b">
                     <select id="SMS" onchange="setTag(this.id,this.value)" data-theme="b" data-role="flipswitch">
                         <option value="0">Não</option>
                         <option value="1">Sim</option>
                     </select>
                 </div>
-                <div data-role="fieldcontain">
-                    <label for="MIS">INTERNO MIS:</label>
+            </div> 
+            <div class="ui-grid-a">
+                <div class="ui-block-a">INTERNO MIS:</div>
+                <div class="ui-block-b">
                     <select id="MIS" onchange="setTag(this.id,this.value)" data-theme="b" data-role="flipswitch">
                         <option value="0">Não</option>
                         <option value="1">Sim</option>
                     </select>
                 </div>
-            </form>
+            </div>         
+
             <footer data-role="footer" data-position="fixed" data-theme="b"></footer>
         </div>
     </div>
