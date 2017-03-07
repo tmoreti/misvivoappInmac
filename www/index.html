@@ -93,7 +93,6 @@ var id_push='';
           url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
           dataType: "html",
           method: 'POST',
-          async: false,
           data: {
                 tipo: 'cadastrar',
                 email: email,
@@ -101,12 +100,12 @@ var id_push='';
                 idPush: id_push
                 }
         }).done(function(html) {
-          localStorage.setItem('email',email);
-          window.plugins.OneSignal.sendTag("fl_autorizado", "0");
-          window.plugins.OneSignal.sendTag("email", email);
-          window.plugins.OneSignal.sendTag("idPush", id_push);
-          navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK')
-          $('#email').val('');
+            localStorage.setItem('email',email);
+            window.plugins.OneSignal.sendTag("fl_autorizado", "0");
+            window.plugins.OneSignal.sendTag("email", email);
+            window.plugins.OneSignal.sendTag("idPush", id_push);
+            navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK')
+            verificarCadastro()
         });
     }
 </script>

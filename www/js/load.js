@@ -1,3 +1,10 @@
+
+
+
+
+  
+
+$(document).on("pagecreate",function(){
   $.ajax({
     url: "footer.html",
     dataType: "html",
@@ -13,5 +20,9 @@
   }).done(function(html) {
     $('header').html(html);
   });
-  
+  verificarCadastro();
+})
+
+ 
+
 
