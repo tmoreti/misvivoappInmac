@@ -60,8 +60,9 @@ var tags='';
                 id_push=ids.userId;
             });
             window.plugins.OneSignal.getTags(function(tags) {
-              tags=JSON.stringify(tags);
-              loadTagsPush();
+              //tags=JSON.stringify(tags);
+              //loadTagsPush();
+              alert(tags.SMS);
             });
     }
     function inicio(){
