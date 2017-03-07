@@ -1,38 +1,15 @@
-$( document ).bind( "mobileinit", function() {
+//$( document ).bind( "mobileinit", function() {
    /* $.mobile.allowCrossDomainPages = true;
     $.mobile.touchOverflowEnabled = false;
 	$.mobile.loader.prototype.options.text = "Carregando..";
 	$.mobile.loader.prototype.options.textVisible = True;
 	$.mobile.loader.prototype.options.theme = "a";
 	$.mobile.loader.prototype.options.html = "";*/
-
-var email=localStorage.getItem('email');
-        $.ajax({
-            url:'http://www.livemusicapp.com.br/misvivoapp/usuarios.php',
-            method: 'POST',
-            dataType: 'html',
-            data:{
-                tipo: 'verificar',
-                email: email
-            },
-            beforeSend: function() {
-                    // This callback function will trigger before data is sent
-                    $.mobile.loading('show', {theme:"b"}); // This will show AJAX spinner
-                },
-        }).done(function(html){
-            $.mobile.loading('hide');
-            if(html==0){
-                $.mobile.changePage("#cadastro");
-                //$('body').fadeIn('fast');
-            }else{
-                window.plugins.OneSignal.sendTag("fl_autorizado", "1");
-                $.mobile.changePage("#logado");
-                //$('body').fadeIn('fast');
-            }
-        });
-   
-});
-
+//});
+/*
+$(document).on("pagecreate",function(){
+  verificarCadastro();
+})*/
 
   $.ajax({
     url: "footer.html",
@@ -49,7 +26,7 @@ var email=localStorage.getItem('email');
   }).done(function(html) {
     $('header').html(html);
   });
- // verificarCadastro();
+  
 
   /*$.ajax({
     url: 'http://www.livemusicapp.com.br/misvivoapp/itens.php',
