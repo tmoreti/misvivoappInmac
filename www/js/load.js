@@ -6,18 +6,22 @@
 	$.mobile.loader.prototype.options.theme = "a";
 	$.mobile.loader.prototype.options.html = "";
 });*/
-$.ajax({
-  url: "footer.html",
-  dataType: "html",
-  async: false
-}).done(function(html) {
-  $('footer').html(html);
-});
+$.mobile.loading('show');
+for(i=0;i<1000;i++){
+  $.ajax({
+    url: "footer.html",
+    dataType: "html",
+    async: false
+  }).done(function(html) {
+    $('footer').html(html);
+  });
 
-$.ajax({
-  url: "header.html",
-  dataType: "html",
-  async: false
-}).done(function(html) {
-  $('header').html(html);
-});
+  $.ajax({
+    url: "header.html",
+    dataType: "html",
+    async: false
+  }).done(function(html) {
+    $('header').html(html);
+  });
+}
+$.mobile.loading('hide');
