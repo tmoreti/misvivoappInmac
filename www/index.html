@@ -79,10 +79,10 @@ var id_push='';
         }).done(function(html){
             $.mobile.loading('hide');
             if(html==0){
-                //$.mobile.changePage("#cadastro");
+                $.mobile.changePage("#cadastro",{changeHash:false});
             }else{
                 window.plugins.OneSignal.sendTag("fl_autorizado", "1");
-               // $.mobile.changePage("#logado");
+                $.mobile.changePage("#logado",{changeHash:false});
             }
         });
     }
@@ -109,9 +109,19 @@ var id_push='';
 </script>
     
 
+    <div data-role="page" id="load">
+        <header data-role="header" data-position="fixed" data-theme="b"></header>
+        <div data-role="content">
+            <h3>
+                <div>
+                    <div style="text-align: left;">Carregando as informações..</div>
+                </div>
+            </h3>
+            
+        </div>
+    </div>
 
-
-       <div data-role="page" id="cadastro">
+    <div data-role="page" id="cadastro">
         <header data-role="header" data-position="fixed" data-theme="b"></header>
         <div data-role="content">
             <h3>
