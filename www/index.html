@@ -58,6 +58,9 @@ var id_push='';
                 //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
                 id_push=ids.userId;
             });
+            window.plugins.OneSignal.getTags(function(tags) {
+              alert('Tags Received: ' + JSON.stringify(tags));
+            });
     }
     function inicio(){
         chamadaOnesignal();
