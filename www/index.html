@@ -104,8 +104,12 @@ var id_push='';
             window.plugins.OneSignal.sendTag("fl_autorizado", "0");
             window.plugins.OneSignal.sendTag("email", email);
             navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK')
-            verificarCadastro()
+            verificarCadastro();
         });
+    }
+    function setTag(item,valor){
+        alert(valor);
+        window.plugins.OneSignal.sendTag(item, valor);
     }
 </script>
     
@@ -187,7 +191,7 @@ var id_push='';
             <fieldset>
                 <div data-role="fieldcontain">
                     <label for="select-based-flipswitch">SMS:</label>
-                    <select id="select-based-flipswitch" data-role="flipswitch">
+                    <select id="select-based-flipswitch" onchange="setTag('SMS',this.value)" data-role="flipswitch">
                         <option value="1">Sim</option>
                         <option value="0">Não</option>
                     </select>
