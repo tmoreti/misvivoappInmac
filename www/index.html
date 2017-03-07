@@ -37,6 +37,7 @@
 <body>
 <script type="text/javascript">
 var id_push='';
+var tags='';
     document.addEventListener('deviceready', inicio, false);
     function chamadaOnesignal(){
         //alert(device.platform);
@@ -59,12 +60,13 @@ var id_push='';
                 id_push=ids.userId;
             });
             window.plugins.OneSignal.getTags(function(tags) {
-              alert('Tags Received: ' + JSON.stringify(tags));
+              tags=JSON.stringify(tags);
             });
     }
     function inicio(){
         chamadaOnesignal();
         verificarCadastro();
+        loadTagsPush();
     }
     function verificarCadastro(){
         var email=localStorage.getItem('email');
@@ -111,8 +113,15 @@ var id_push='';
         });
     }
     function setTag(item,valor){
-        alert(valor);
         window.plugins.OneSignal.sendTag(item, valor);
+    }
+    function getTag(item){
+        var t=JSON.parse(tag);
+        alert(t[item]);
+    }
+    function loadTagsPush(){
+        var t=JSON.parse(tag);
+        alert(t.lenght);
     }
 </script>
     
