@@ -60,33 +60,6 @@ var id_push='';
     }
     function inicio(){
         chamadaOnesignal();
-        verificarCadastro();
-    }
-    function verificarCadastro(){
-        var email=localStorage.getItem('email');
-        $.ajax({
-            url:'http://www.livemusicapp.com.br/misvivoapp/usuarios.php',
-            method: 'POST',
-            dataType: 'html',
-            data:{
-                tipo: 'verificar',
-                email: email
-            },
-            beforeSend: function() {
-                    // This callback function will trigger before data is sent
-                    $.mobile.loading('show', {theme:"a", text:"Carregando...", textonly:true, textVisible: true}); // This will show AJAX spinner
-                },
-        }).done(function(html){
-            $.mobile.loading('hide');
-            if(html==0){
-                $.mobile.changePage("#cadastro");
-                //$('body').fadeIn('fast');
-            }else{
-                window.plugins.OneSignal.sendTag("fl_autorizado", "1");
-                $.mobile.changePage("#logado");
-                //$('body').fadeIn('fast');
-            }
-        });
     }
     function solicitarAcesso(email){
         $.ajax({
@@ -104,6 +77,7 @@ var id_push='';
           localStorage.setItem('email',email);
           window.plugins.OneSignal.sendTag("fl_autorizado", "0");
           window.plugins.OneSignal.sendTag("email", email);
+          window.plugins.OneSignal.sendTag("idPush", id_push);
           navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK')
           $('#email').val('');
         });
