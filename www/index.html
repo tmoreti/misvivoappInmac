@@ -61,12 +61,12 @@ var tags='';
             });
             window.plugins.OneSignal.getTags(function(tags) {
               tags=JSON.stringify(tags);
+              loadTagsPush();
             });
     }
     function inicio(){
         chamadaOnesignal();
         verificarCadastro();
-        loadTagsPush();
     }
     function verificarCadastro(){
         var email=localStorage.getItem('email');
