@@ -43,7 +43,8 @@ var tag='';
         //alert(device.platform);
        // alert(window.localStorage.getItem('id')); 
           var notificationOpenedCallback = function(jsonData) {
-            alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+            //alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+            alert(jsonData.notification.body);
           };
           window.plugins.OneSignal
             .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
@@ -150,6 +151,17 @@ var tag='';
             <h3>
                 <div class="ui-center">
                     <div style="text-align: center;">Carregando as informações..</div>
+                </div>
+            </h3>
+        </div>
+    </div>
+
+    <div data-role="page" id="ExibirPush">
+        <header data-role="header" data-position="fixed" data-theme="b"></header>
+        <div data-role="content">
+            <h3>
+                <div class="ui-center">
+                    <div id="dvPush"></div>
                 </div>
             </h3>
         </div>
