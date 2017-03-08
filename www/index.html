@@ -134,9 +134,9 @@ var tag='';
                 $('#divItens').html(html).enhanceWithin();
             });
           
-            var arr=Object.value(tags);
+            var arr=Object.keys(tags);
             for(var i=0;i<arr.length;i++){
-                alert(arr[i]);
+                alert(eval('tags.' + arr[i]));
             }
         });
     }
