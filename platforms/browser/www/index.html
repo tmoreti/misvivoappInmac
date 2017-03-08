@@ -43,14 +43,15 @@ var tag='';
         //alert(device.platform);
        // alert(window.localStorage.getItem('id')); 
           var notificationOpenedCallback = function(jsonData) {
-            alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+            //alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+            $('#dvPushTitle').html(jsonData.notification.payload.title);
+            $('#dvPushDesc').html(jsonData.notification.payload.body);
+            $.mobile.changePage( "#ExibirPush", { role: "dialog" } );
           };
           window.plugins.OneSignal
             .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
-            //.handleNotificationReceived(function(jsonData) {
-                //alert("Notification received:\n" + JSON.stringify(jsonData));
-                //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
-              //})
+            .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.Notification)
+            //.handleNotificationReceived(notificationOpenedCallback)
             .handleNotificationOpened(notificationOpenedCallback)
             .endInit();
         
@@ -61,10 +62,25 @@ var tag='';
             });
             
     }
+
     function inicio(){
-        chamadaOnesignal();
-        verificarCadastro();
-        loadTagsPush();
+        if(navigator.connection.type!=Connection.NONE){
+            chamadaOnesignal();
+            loadTagsPush();
+            verificarCadastro();
+        }else{
+            navigator.notification.alert('Você está sem acesso à internet.', function(){
+                if (navigator.app) {
+                    navigator.app.exitApp();
+                }
+                else if (navigator.device) {
+                    navigator.device.exitApp();
+                }
+                else {
+                    window.close();
+                }
+            }, 'Sem conexão', 'OK');
+        }
     }
     function verificarCadastro(){
         var email=localStorage.getItem('email');
@@ -83,14 +99,17 @@ var tag='';
         }).done(function(html){
             $.mobile.loading('hide');
             if(html==0){
-                $.mobile.changePage("#cadastro",{changeHash:false});
+                $.mobile.changePage("#cadastro");
             }else{
                 window.plugins.OneSignal.sendTag("fl_autorizado", "1");
-                $.mobile.changePage("#logado",{changeHash:false});
+                $.mobile.changePage("#logado");
             }
         });
     }
     function solicitarAcesso(email){
+        if(email==''){
+            navigator.notification.alert('E-mail em branco.', function(){return false}, 'Mis Vivo App', 'OK');
+        }
         $.ajax({
           url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
           dataType: "html",
@@ -102,12 +121,13 @@ var tag='';
                 idPush: id_push
                 }
         }).done(function(html) {
-            localStorage.setItem('email',email);
-            localStorage.setItem('idPush',idPush);
-            window.plugins.OneSignal.sendTag("fl_autorizado", "0");
-            window.plugins.OneSignal.sendTag("email", email);
-            navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK')
-            verificarCadastro();
+            navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){
+                localStorage.setItem('email',email);
+                localStorage.setItem('idPush',idPush);
+                window.plugins.OneSignal.sendTag("fl_autorizado", "0");
+                //window.plugins.OneSignal.sendTag("email", email);
+                verificarCadastro();
+            }, 'Mis Vivo App', 'OK');
         });
     }
     function setTag(item,valor){
@@ -119,20 +139,56 @@ var tag='';
     }
     function loadTagsPush(){
         window.plugins.OneSignal.getTags(function(tags) {
-          var tag=JSON.stringify(tags);
-         //console.log('Tags Received: ' + JSON.stringify(tags));
-          alert(tag.length);
+          //tags=JSON.stringify(tags);
+          //loadTagsPush();
+          //alert(tags.length);
+            $.ajax({
+              url: "http://www.livemusicapp.com.br/misvivoapp/itens.php",
+              dataType: "html",
+              method: 'POST',
+              async: false,
+              data: {
+                    email: localStorage.getItem('email')
+                    }
+            }).done(function(html) {
+                $('#divItens').html(html).enhanceWithin();
+                var arr=Object.keys(tags);
+                for(var i=0;i<arr.length;i++){
+                    if(arr[i]!='fl_autorizado'){
+                        var valor=eval('tags.' + arr[i]);
+                        //alert(arr[i] + '----->' + valor);
+                        $('#' + arr[i]).val(valor).change();
+                       
+                    }
+                }
+            });
         });
     }
 </script>
     
 
-    <div data-role="page" id="load">
+    <div data-role="page" id="load" changeHash="false">
         <header data-role="header" data-position="fixed" data-theme="b"></header>
         <div data-role="content">
             <h3>
                 <div class="ui-center">
-                    <div style="text-align: center;">Carregando as informações..</div>
+                    <div style="text-align: center;">Carregando..</div>
+                </div>
+            </h3>
+        </div>
+    </div>
+
+    <div data-role="page" id="ExibirPush">
+        <header data-role="header" data-position="fixed" data-theme="b"></header>
+        <div data-role="content">
+            <h2>
+                <div class="ui-center">
+                    <div id="dvPushTitle"></div>
+                </div>
+            </h2>
+            <h3>
+                <div class="ui-center">
+                    <div id="dvPushDesc"></div>
                 </div>
             </h3>
         </div>
@@ -162,7 +218,7 @@ var tag='';
         <div data-role="content">
             <h3>
                 <div>
-                    <div style="text-align: left;">Solicitar acesso</div>
+                    <div style="text-align: left;">Trocar acesso</div>
                 </div>
             </h3>
             <div data-role="fieldcontain" class="ui-hide-label">
@@ -182,7 +238,7 @@ var tag='';
         <div data-role="content">
             <h3>
                 <div>
-                    <div style="text-align: center;" class="ui-center">Seu acesso já foi liberado para receber as informações</div>
+                    <div style="text-align: center;" class="ui-center">Seu acesso já foi liberado para receber as informações via push! <br> No menu push, selecione as informações que deseja receber.</div>
                 </div>
             </h3>
             
@@ -201,24 +257,7 @@ var tag='';
                     <div style="text-align: left;">Selecione:</div>
                 </div>
             </h3>
-            <div class="ui-grid-a">
-                <div class="ui-block-a">SMS</div>
-                <div class="ui-block-b">
-                    <select id="SMS" onchange="setTag(this.id,this.value)" data-theme="b" data-role="flipswitch">
-                        <option value="0">Não</option>
-                        <option value="1">Sim</option>
-                    </select>
-                </div>
-            </div> 
-            <div class="ui-grid-a">
-                <div class="ui-block-a">INTERNO MIS:</div>
-                <div class="ui-block-b">
-                    <select id="MIS" onchange="setTag(this.id,this.value)" data-theme="b" data-role="flipswitch">
-                        <option value="0">Não</option>
-                        <option value="1">Sim</option>
-                    </select>
-                </div>
-            </div>         
+            <div id="divItens"></div>       
 
             <footer data-role="footer" data-position="fixed" data-theme="b"></footer>
         </div>
@@ -233,6 +272,16 @@ var tag='';
             <h3>
                 <div>
                     <div style="text-align: left;">Ajuda</div>
+                </div>
+            </h3>
+            <h3>
+                <div>
+                    <div style="text-align: center;">Versão: 1.0.0</div>
+                </div>
+            </h3>
+            <h3>
+                <div>
+                    <div style="text-align: center;">E-mail: thiago.moreti@telefonica.com</div>
                 </div>
             </h3>
             <footer data-role="footer" data-position="fixed" data-theme="b"></footer>

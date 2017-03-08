@@ -99,10 +99,10 @@ var tag='';
         }).done(function(html){
             $.mobile.loading('hide');
             if(html==0){
-                $.mobile.changePage("#cadastro",{changeHash:false});
+                $.mobile.changePage("#cadastro");
             }else{
                 window.plugins.OneSignal.sendTag("fl_autorizado", "1");
-                $.mobile.changePage("#logado",{changeHash:false});
+                $.mobile.changePage("#logado");
             }
         });
     }
@@ -167,7 +167,7 @@ var tag='';
 </script>
     
 
-    <div data-role="page" id="load">
+    <div data-role="page" id="load" changeHash="false">
         <header data-role="header" data-position="fixed" data-theme="b"></header>
         <div data-role="content">
             <h3>
