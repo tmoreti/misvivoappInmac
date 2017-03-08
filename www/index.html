@@ -158,9 +158,11 @@ var tag='';
                 var arr=Object.keys(tags);
                 alert(arr.length);
                 for(var i=0;i<arr.length;i++){
-                    var valor=eval('tags.' + arr[i]);
-                    $('#' + arr[i]).val(valor).change();
-                    alert(arr[i] + '----->' + valor);
+                    if(arr[i]!='fl_autorizado'){
+                        var valor=eval('tags.' + arr[i]);
+                        $('#' + arr[i]).val(valor).change();
+                        alert(arr[i] + '----->' + valor);
+                    }
                 }
             });
         });
