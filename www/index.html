@@ -43,8 +43,8 @@ var tag='';
         //alert(device.platform);
        // alert(window.localStorage.getItem('id')); 
           var notificationOpenedCallback = function(jsonData) {
-            //alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-            alert(jsonData.notification.body);
+            alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+            alert(JSON.stringify(jsonData.notification));
           };
           window.plugins.OneSignal
             .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
@@ -70,7 +70,7 @@ var tag='';
     function verificarCadastro(){
         var email=localStorage.getItem('email');
         $.ajax({
-            url:'http://www.livemusicapp.com.br/misvivoapp/usuarios.php',
+            url:'https://www.livemusicapp.com.br/misvivoapp/usuarios.php',
             method: 'POST',
             dataType: 'html',
             async: false,
@@ -93,7 +93,7 @@ var tag='';
     }
     function solicitarAcesso(email){
         $.ajax({
-          url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
+          url: "https://www.livemusicapp.com.br/misvivoapp/usuarios.php",
           dataType: "html",
           method: 'POST',
           data: {
@@ -124,7 +124,7 @@ var tag='';
           //loadTagsPush();
           //alert(tags.length);
             $.ajax({
-              url: "http://www.livemusicapp.com.br/misvivoapp/itens.php",
+              url: "https://www.livemusicapp.com.br/misvivoapp/itens.php",
               dataType: "html",
               method: 'POST',
               async: false,
