@@ -43,8 +43,8 @@ var tag='';
         //alert(device.platform);
        // alert(window.localStorage.getItem('id')); 
           var notificationOpenedCallback = function(jsonData) {
-            alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-            $('#dvPushTitle').html('titulo');
+            //alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+            $('#dvPushTitle').html(jsonData.notification.payload.title);
             $('#dvPushDesc').html(jsonData.notification.payload.body);
             $.mobile.changePage( "#ExibirPush", { role: "dialog" } );
           };
