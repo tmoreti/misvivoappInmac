@@ -119,10 +119,9 @@ var tag='';
     }
     function loadTagsPush(){
         window.plugins.OneSignal.getTags(function(tags) {
-          tags=JSON.stringify(tags);
-          //loadTagsPush();
-          //alert(tags.length);
-          alert(tags.length);
+          var tag=JSON.stringify(tags);
+         //console.log('Tags Received: ' + JSON.stringify(tags));
+          alert(tag.length);
         });
     }
 </script>
