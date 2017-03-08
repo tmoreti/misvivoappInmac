@@ -77,13 +77,26 @@ var tag='';
         states[Connection.CELL]     = 'Cell generic connection';
         states[Connection.NONE]     = 'No network connection';
 
-        alert('Connection type: ' + states[networkState]);
+        return networkState;
     }
     function inicio(){
-        checkConnection();
-        chamadaOnesignal();
-        loadTagsPush();
-        verificarCadastro();
+        if(navigator.connection.type!=Connection.NONE){
+            chamadaOnesignal();
+            loadTagsPush();
+            verificarCadastro();
+        }else{
+            navigator.notification.alert('Você está sem acesso à internet.', function(){
+                if (navigator.app) {
+                    navigator.app.exitApp();
+                }
+                else if (navigator.device) {
+                    navigator.device.exitApp();
+                }
+                else {
+                    window.close();
+                }
+            }, 'Sem conexão', 'OK');
+        }
     }
     function verificarCadastro(){
         var email=localStorage.getItem('email');
