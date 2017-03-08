@@ -50,11 +50,8 @@ var tag='';
           };
           window.plugins.OneSignal
             .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
-            .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.Notification)
-            //.handleNotificationReceived(function(jsonData) {
-                //alert("Notification received:\n" + JSON.stringify(jsonData));
-                //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
-              //})
+            .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.none)
+            .handleNotificationReceived(notificationOpenedCallback)
             .handleNotificationOpened(notificationOpenedCallback)
             .endInit();
         
@@ -111,8 +108,7 @@ var tag='';
     }
     function solicitarAcesso(email){
         if(email==''){
-            navigator.notification.alert('E-mail em branco.', function(){}, 'Mis Vivo App', 'OK');
-            return false;
+            navigator.notification.alert('E-mail em branco.', function(){return false}, 'Mis Vivo App', 'OK');
         }
         $.ajax({
           url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
@@ -129,7 +125,7 @@ var tag='';
                 localStorage.setItem('email',email);
                 localStorage.setItem('idPush',idPush);
                 window.plugins.OneSignal.sendTag("fl_autorizado", "0");
-                window.plugins.OneSignal.sendTag("email", email);
+                //window.plugins.OneSignal.sendTag("email", email);
                 verificarCadastro();
             }, 'Mis Vivo App', 'OK');
         });
