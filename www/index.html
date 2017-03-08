@@ -122,8 +122,18 @@ var tag='';
           //tags=JSON.stringify(tags);
           //loadTagsPush();
           //alert(tags.length);
-          $('#divItens').html('teste 12345');
-          var count=Object.keys(tags).length;
+            $.ajax({
+              url: "http://www.livemusicapp.com.br/misvivoapp/itens.php",
+              dataType: "html",
+              method: 'POST',
+              data: {
+                    email: localStorage.getItem('email');
+                    }
+            }).done(function(html) {
+                $('#divItens').html(html);
+            });
+          
+            var count=Object.keys(tags).length;
           //alert(count);
         });
     }
