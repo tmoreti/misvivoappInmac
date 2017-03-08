@@ -50,6 +50,7 @@ var tag='';
           };
           window.plugins.OneSignal
             .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
+            .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.None)
             //.handleNotificationReceived(function(jsonData) {
                 //alert("Notification received:\n" + JSON.stringify(jsonData));
                 //console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
@@ -64,21 +65,7 @@ var tag='';
             });
             
     }
-    function checkConnection() {
-        var networkState = navigator.connection.type;
 
-        var states = {};
-        states[Connection.UNKNOWN]  = 'Unknown connection';
-        states[Connection.ETHERNET] = 'Ethernet connection';
-        states[Connection.WIFI]     = 'WiFi connection';
-        states[Connection.CELL_2G]  = 'Cell 2G connection';
-        states[Connection.CELL_3G]  = 'Cell 3G connection';
-        states[Connection.CELL_4G]  = 'Cell 4G connection';
-        states[Connection.CELL]     = 'Cell generic connection';
-        states[Connection.NONE]     = 'No network connection';
-
-        return networkState;
-    }
     function inicio(){
         if(navigator.connection.type!=Connection.NONE){
             chamadaOnesignal();
@@ -169,6 +156,7 @@ var tag='';
             }).done(function(html) {
                 $('#divItens').html(html).enhanceWithin();
                 var arr=Object.keys(tags);
+                alert(arr.length);
                 for(var i=0;i<arr.length;i++){
                     var valor=eval('tags.' + arr[i]);
                     $('#' + arr[i]).val(valor).change();
