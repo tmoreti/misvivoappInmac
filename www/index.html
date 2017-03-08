@@ -125,12 +125,13 @@ var tag='';
                 idPush: id_push
                 }
         }).done(function(html) {
-            localStorage.setItem('email',email);
-            localStorage.setItem('idPush',idPush);
-            window.plugins.OneSignal.sendTag("fl_autorizado", "0");
-            window.plugins.OneSignal.sendTag("email", email);
-            navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK');
-            verificarCadastro();
+            navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){
+                localStorage.setItem('email',email);
+                localStorage.setItem('idPush',idPush);
+                window.plugins.OneSignal.sendTag("fl_autorizado", "0");
+                window.plugins.OneSignal.sendTag("email", email);
+                verificarCadastro();
+            }, 'Mis Vivo App', 'OK');
         });
     }
     function setTag(item,valor){
@@ -156,11 +157,10 @@ var tag='';
             }).done(function(html) {
                 $('#divItens').html(html).enhanceWithin();
                 var arr=Object.keys(tags);
-                alert('TM ' + arr.length);
                 for(var i=0;i<arr.length;i++){
                     if(arr[i]!='fl_autorizado'){
-                        alert(arr[i] + '----->' + valor);
                         var valor=eval('tags.' + arr[i]);
+                        //alert(arr[i] + '----->' + valor);
                         $('#' + arr[i]).val(valor).change();
                        
                     }
