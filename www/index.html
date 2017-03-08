@@ -126,6 +126,7 @@ var tag='';
               url: "http://www.livemusicapp.com.br/misvivoapp/itens.php",
               dataType: "html",
               method: 'POST',
+              async: false,
               data: {
                     email: localStorage.getItem('email')
                     }
