@@ -127,7 +127,7 @@ var tag='';
               dataType: "html",
               method: 'POST',
               data: {
-                    email: localStorage.getItem('email');
+                    email: localStorage.getItem('email')
                     }
             }).done(function(html) {
                 $('#divItens').html(html);
