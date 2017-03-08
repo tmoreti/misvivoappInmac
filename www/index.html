@@ -64,7 +64,23 @@ var tag='';
             });
             
     }
+    function checkConnection() {
+        var networkState = navigator.connection.type;
+
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.CELL]     = 'Cell generic connection';
+        states[Connection.NONE]     = 'No network connection';
+
+        alert('Connection type: ' + states[networkState]);
+    }
     function inicio(){
+        checkConnection();
         chamadaOnesignal();
         loadTagsPush();
         verificarCadastro();
@@ -152,7 +168,7 @@ var tag='';
         <div data-role="content">
             <h3>
                 <div class="ui-center">
-                    <div style="text-align: center;">Carregando as informações..</div>
+                    <div style="text-align: center;">Carregando..</div>
                 </div>
             </h3>
         </div>
@@ -198,7 +214,7 @@ var tag='';
         <div data-role="content">
             <h3>
                 <div>
-                    <div style="text-align: left;">Solicitar acesso</div>
+                    <div style="text-align: left;">Trocar acesso</div>
                 </div>
             </h3>
             <div data-role="fieldcontain" class="ui-hide-label">
@@ -218,7 +234,7 @@ var tag='';
         <div data-role="content">
             <h3>
                 <div>
-                    <div style="text-align: center;" class="ui-center">Seu acesso já foi liberado para receber as informações</div>
+                    <div style="text-align: center;" class="ui-center">Seu acesso já foi liberado para receber as informações via push! <br> No menu push, selecione as informações que deseja receber.</div>
                 </div>
             </h3>
             
@@ -252,6 +268,16 @@ var tag='';
             <h3>
                 <div>
                     <div style="text-align: left;">Ajuda</div>
+                </div>
+            </h3>
+            <h3>
+                <div>
+                    <div style="text-align: center;">Versão: 1.0.0</div>
+                </div>
+            </h3>
+            <h3>
+                <div>
+                    <div style="text-align: center;">E-mail: thiago.moreti@telefonica.com</div>
                 </div>
             </h3>
             <footer data-role="footer" data-position="fixed" data-theme="b"></footer>
