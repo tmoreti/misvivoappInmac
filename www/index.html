@@ -168,13 +168,12 @@ var tag='';
                     }
             }).done(function(html) {
                 $('#divItens').html(html).enhanceWithin();
+                var arr=Object.keys(tags);
+                for(var i=0;i<arr.length;i++){
+                    var valor=eval('tags.' + arr[i]);
+                    $('#' + arr[i]).val(valor).change();
+                }
             });
-          
-            var arr=Object.keys(tags);
-            for(var i=0;i<arr.length;i++){
-                var valor=eval('tags.' + arr[i]);
-                $('#' + arr[i]).val(valor).change();
-            }
         });
     }
 </script>
