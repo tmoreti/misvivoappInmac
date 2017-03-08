@@ -131,7 +131,7 @@ var tag='';
                     email: localStorage.getItem('email')
                     }
             }).done(function(html) {
-                $('#divItens').html(html);
+                $('#divItens').html(html).enhanceWithin();
             });
           
             var count=Object.keys(tags).length;
