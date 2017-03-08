@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
     <link rel="stylesheet" href="css/jquery.mobile.theme-1.4.5.min.css" />
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/estilos.css" />
 </head>
     
 
@@ -36,6 +37,7 @@
 <body>
 <script type="text/javascript">
 var id_push='';
+var tag='';
     document.addEventListener('deviceready', inicio, false);
     function chamadaOnesignal(){
         //alert(device.platform);
@@ -57,10 +59,12 @@ var id_push='';
                 //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
                 id_push=ids.userId;
             });
+            
     }
     function inicio(){
         chamadaOnesignal();
         verificarCadastro();
+        loadTagsPush();
     }
     function verificarCadastro(){
         var email=localStorage.getItem('email');
@@ -68,23 +72,21 @@ var id_push='';
             url:'http://www.livemusicapp.com.br/misvivoapp/usuarios.php',
             method: 'POST',
             dataType: 'html',
+            async: false,
             data:{
                 tipo: 'verificar',
                 email: email
             },
             beforeSend: function() {
-                    // This callback function will trigger before data is sent
-                    $.mobile.loading('show', {theme:"a", text:"Carregando...", textonly:true, textVisible: true}); // This will show AJAX spinner
-                },
+                $.mobile.loading('show', {theme:"b"});
+            },
         }).done(function(html){
             $.mobile.loading('hide');
             if(html==0){
-                $.mobile.changePage("#cadastro");
-                //$('body').fadeIn('fast');
+                $.mobile.changePage("#cadastro",{changeHash:false});
             }else{
                 window.plugins.OneSignal.sendTag("fl_autorizado", "1");
-                $.mobile.changePage("#logado");
-                //$('body').fadeIn('fast');
+                $.mobile.changePage("#logado",{changeHash:false});
             }
         });
     }
@@ -93,7 +95,6 @@ var id_push='';
           url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
           dataType: "html",
           method: 'POST',
-          async: false,
           data: {
                 tipo: 'cadastrar',
                 email: email,
@@ -101,24 +102,49 @@ var id_push='';
                 idPush: id_push
                 }
         }).done(function(html) {
-          localStorage.setItem('email',email);
-          window.plugins.OneSignal.sendTag("fl_autorizado", "0");
-          window.plugins.OneSignal.sendTag("email", email);
-          navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK')
-          $('#email').val('');
+            localStorage.setItem('email',email);
+            localStorage.setItem('idPush',idPush);
+            window.plugins.OneSignal.sendTag("fl_autorizado", "0");
+            window.plugins.OneSignal.sendTag("email", email);
+            navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK')
+            verificarCadastro();
+        });
+    }
+    function setTag(item,valor){
+        window.plugins.OneSignal.sendTag(item, valor);
+    }
+    function getTag(item){
+        //var t=JSON.parse(tag);
+        //alert(t[item]);
+    }
+    function loadTagsPush(){
+        window.plugins.OneSignal.getTags(function(tags) {
+          tags=JSON.stringify(tags);
+          //loadTagsPush();
+          //alert(tags.length);
+          alert(tags.length);
         });
     }
 </script>
     
 
+    <div data-role="page" id="load">
+        <header data-role="header" data-position="fixed" data-theme="b"></header>
+        <div data-role="content">
+            <h3>
+                <div class="ui-center">
+                    <div style="text-align: center;">Carregando as informações..</div>
+                </div>
+            </h3>
+        </div>
+    </div>
 
-
-       <div data-role="page" id="cadastro">
+    <div data-role="page" id="cadastro">
         <header data-role="header" data-position="fixed" data-theme="b"></header>
         <div data-role="content">
             <h3>
                 <div>
-                    <div style="text-align: left;">Solicitar acesso</div>
+                    <div style="text-align: left;">Solicitar acesso:</div>
                 </div>
             </h3>
             <div data-role="fieldcontain" class="ui-hide-label">
@@ -157,7 +183,7 @@ var id_push='';
         <div data-role="content">
             <h3>
                 <div>
-                    <div style="text-align: left;">Seu acesso já foi liberado para receber as informações</div>
+                    <div style="text-align: center;" class="ui-center">Seu acesso já foi liberado para receber as informações</div>
                 </div>
             </h3>
             
@@ -176,7 +202,25 @@ var id_push='';
                     <div style="text-align: left;">Selecione:</div>
                 </div>
             </h3>
-            
+            <div class="ui-grid-a">
+                <div class="ui-block-a">SMS</div>
+                <div class="ui-block-b">
+                    <select id="SMS" onchange="setTag(this.id,this.value)" data-theme="b" data-role="flipswitch">
+                        <option value="0">Não</option>
+                        <option value="1">Sim</option>
+                    </select>
+                </div>
+            </div> 
+            <div class="ui-grid-a">
+                <div class="ui-block-a">INTERNO MIS:</div>
+                <div class="ui-block-b">
+                    <select id="MIS" onchange="setTag(this.id,this.value)" data-theme="b" data-role="flipswitch">
+                        <option value="0">Não</option>
+                        <option value="1">Sim</option>
+                    </select>
+                </div>
+            </div>         
+
             <footer data-role="footer" data-position="fixed" data-theme="b"></footer>
         </div>
     </div>
