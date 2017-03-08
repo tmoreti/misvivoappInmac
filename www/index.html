@@ -122,8 +122,9 @@ var tag='';
           //tags=JSON.stringify(tags);
           //loadTagsPush();
           //alert(tags.length);
+          $('#divItens').html('teste 12345');
           var count=Object.keys(tags).length;
-          alert(count);
+          //alert(count);
         });
     }
 </script>
@@ -203,7 +204,7 @@ var tag='';
                     <div style="text-align: left;">Selecione:</div>
                 </div>
             </h3>
-            <div class="ui-grid-a">
+            <div>
                 <div class="ui-block-a">SMS</div>
                 <div class="ui-block-b">
                     <select id="SMS" onchange="setTag(this.id,this.value)" data-theme="b" data-role="flipswitch">
@@ -212,7 +213,7 @@ var tag='';
                     </select>
                 </div>
             </div> 
-            <div class="ui-grid-a">
+            <div>
                 <div class="ui-block-a">INTERNO MIS:</div>
                 <div class="ui-block-b">
                     <select id="MIS" onchange="setTag(this.id,this.value)" data-theme="b" data-role="flipswitch">
@@ -220,7 +221,8 @@ var tag='';
                         <option value="1">Sim</option>
                     </select>
                 </div>
-            </div>         
+            </div>
+            <div id="divItens"></div>       
 
             <footer data-role="footer" data-position="fixed" data-theme="b"></footer>
         </div>
