@@ -44,7 +44,9 @@ var tag='';
        // alert(window.localStorage.getItem('id')); 
           var notificationOpenedCallback = function(jsonData) {
             alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-            alert(jsonData.notification.payload.body);
+            $('#dvPushTitle').html('titulo');
+            $('#dvPushDesc').html(jsonData.notification.payload.body);
+            $.mobile.changePage( "#ExibirPush", { role: "dialog" } );
           };
           window.plugins.OneSignal
             .startInit("2bd37578-9342-4df7-a597-1a0b941a7445")
@@ -107,7 +109,7 @@ var tag='';
             localStorage.setItem('idPush',idPush);
             window.plugins.OneSignal.sendTag("fl_autorizado", "0");
             window.plugins.OneSignal.sendTag("email", email);
-            navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK')
+            navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){}, 'Mis Vivo App', 'OK');
             verificarCadastro();
         });
     }
@@ -159,9 +161,14 @@ var tag='';
     <div data-role="page" id="ExibirPush">
         <header data-role="header" data-position="fixed" data-theme="b"></header>
         <div data-role="content">
+            <h2>
+                <div class="ui-center">
+                    <div id="dvPushTitle"></div>
+                </div>
+            </h2>
             <h3>
                 <div class="ui-center">
-                    <div id="dvPush"></div>
+                    <div id="dvPushDesc"></div>
                 </div>
             </h3>
         </div>
