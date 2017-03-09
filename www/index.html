@@ -108,7 +108,8 @@ var tag='';
     }
     function solicitarAcesso(email){
         if(email==''){
-            navigator.notification.alert('E-mail em branco.', function(){return false}, 'Mis Vivo App', 'OK');
+            navigator.notification.alert('E-mail em branco.', function(){}, 'Mis Vivo App', 'OK');
+            return true
         }
         $.ajax({
           url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
