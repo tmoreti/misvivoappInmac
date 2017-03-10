@@ -108,12 +108,40 @@ var tag='';
     }
     function solicitarAcesso(email){
         if(email==''){
-            navigator.notification.alert('E-mail em branco.', function(){return false}, 'Mis Vivo App', 'OK');
+            navigator.notification.alert('E-mail em branco.', function(){}, 'Mis Vivo App', 'OK');
+            return true
         }
         $.ajax({
           url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
           dataType: "html",
           method: 'POST',
+          async: false,
+          data: {
+                tipo: 'cadastrar',
+                email: email,
+                fl_autorizado:0,
+                idPush: id_push
+                }
+        }).done(function(html) {
+            navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){
+                localStorage.setItem('email',email);
+                localStorage.setItem('idPush',idPush);
+                window.plugins.OneSignal.sendTag("fl_autorizado", "0");
+                //window.plugins.OneSignal.sendTag("email", email);
+                verificarCadastro();
+            }, 'Mis Vivo App', 'OK');
+        });
+    }
+    function trocarAcesso(email){
+        if(email==''){
+            navigator.notification.alert('E-mail em branco.', function(){}, 'Mis Vivo App', 'OK');
+            return true
+        }
+        $.ajax({
+          url: "http://www.livemusicapp.com.br/misvivoapp/usuarios.php",
+          dataType: "html",
+          method: 'POST',
+          async: false,
           data: {
                 tipo: 'cadastrar',
                 email: email,
@@ -223,8 +251,8 @@ var tag='';
             </h3>
             <div data-role="fieldcontain" class="ui-hide-label">
                 <label for="username">E-mail:</label>
-                <input type="text" name="email" id="email" value="" placeholder="email@telefonica.com"/>
-                <a href="#" onclick="solicitarAcesso($('#email').val())" class="ui-shadow ui-btn ui-corner-all">Enviar</a>
+                <input type="text" name="trocaremail" id="trocaremail" value="" placeholder="email@telefonica.com"/>
+                <a href="#" onclick="trocarAcesso($('#trocaremail').val())" class="ui-shadow ui-btn ui-corner-all">Enviar</a>
             </div>
         </div>
         <footer data-role="footer" data-position="fixed" data-theme="b"></footer>
@@ -238,7 +266,7 @@ var tag='';
         <div data-role="content">
             <h3>
                 <div>
-                    <div style="text-align: center;" class="ui-center">Seu acesso já foi liberado para receber as informações via push! <br> No menu push, selecione as informações que deseja receber.</div>
+                    <div style="text-align: center;" class="ui-center">Seu acesso está liberado para receber as informações via push! <br><br><br> No menu push, selecione as informações que deseja receber.</div>
                 </div>
             </h3>
             
