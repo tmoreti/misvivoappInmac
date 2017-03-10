@@ -79,11 +79,12 @@ var tag='';
             $.mobile.loading('hide');
             if(html==0){
                 //$.mobile.changePage("#cadastro");
-                $.mobile.navigate("#cadastro");
+                //alert($.mobile.activePage);
+                $.mobile.navigate("#cadastro",{changeHash:false});
             }else{
                 window.plugins.OneSignal.sendTag("fl_autorizado", "1");
                 //$.mobile.changePage("#logado");
-                $.mobile.navigate("#logado");
+                $.mobile.navigate("#logado",{changeHash:false});
             }
         });
     }
