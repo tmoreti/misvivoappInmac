@@ -1,5 +1,6 @@
 $(document).on("mobileinit",function() {
     $.mobile.autoInitializePage = false;
+    $.mobile.initializePage = false;
 }); 
 $.ajax({
   url: "footer.html",
