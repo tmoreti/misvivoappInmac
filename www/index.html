@@ -79,8 +79,9 @@ var tag='';
             $.mobile.loading('hide');
             if(html==0){
                 //$.mobile.changePage("#cadastro");
-                alert($.mobile.activePage.attr( "id" ));
+                
                 document.addEventListener("backbutton", function (e) {
+                    alert($.mobile.activePage.attr( "id" ));
                     e.preventDefault();
                 }, false );
                 $.mobile.navigate("#cadastro",{changeHash:false});
