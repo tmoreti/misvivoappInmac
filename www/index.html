@@ -43,6 +43,9 @@ var tag='';
     }
 
     function inicio(){
+        document.addEventListener("backbutton", function (e) {
+            e.preventDefault();
+        }, false );
         if(navigator.connection.type!=Connection.NONE){
             chamadaOnesignal();
             loadTagsPush();
