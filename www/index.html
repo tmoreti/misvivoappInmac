@@ -63,11 +63,13 @@ var tag='';
     }
     function verificarCadastro(){
 
-       /* document.addEventListener("backbutton", function (e) {
+        document.addEventListener("backbutton", function (e) {
             if($.mobile.activePage.attr( "id" )=="cadastro"){
                 e.preventDefault();
+            }else {
+                navigator.app.backHistory()
             }
-        }, false );*/
+        }, false );
         var email=localStorage.getItem('email');
         $.ajax({
             url:'http://www.livemusicapp.com.br/misvivoapp/usuarios.php',
@@ -84,8 +86,8 @@ var tag='';
         }).done(function(html){
             $.mobile.loading('hide');
             if(html==0){
-                $.mobile.changePage("#cadastro",{reverse: true, changeHash: true});
-                //$.mobile.navigate("#cadastro",{changeHash:false});
+                //$.mobile.changePage("#cadastro");
+                $.mobile.navigate("#cadastro",{changeHash:false});
             }else{
                 window.plugins.OneSignal.sendTag("fl_autorizado", "1");
                 //$.mobile.changePage("#logado");
@@ -176,7 +178,7 @@ var tag='';
 </script>
     
 
-    <div data-role="page" id="load" changeHash="true">
+    <!--<div data-role="page" id="load" changeHash="false">
         <header data-role="header" data-position="fixed" data-theme="b"></header>
         <div data-role="content">
             <h3>
@@ -185,7 +187,7 @@ var tag='';
                 </div>
             </h3>
         </div>
-    </div>
+    </div>-->
 
     <div data-role="page" id="ExibirPush">
         <header data-role="header" data-position="fixed" data-theme="b"></header>
