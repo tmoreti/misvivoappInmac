@@ -1,21 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
 
 <head>
@@ -29,6 +12,7 @@
     <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
     <link rel="stylesheet" href="css/jquery.mobile.theme-1.4.5.min.css" />
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/vivoTheme.css" />
     <link rel="stylesheet" href="css/estilos.css" />
 </head>
     
@@ -40,8 +24,6 @@ var id_push='';
 var tag='';
     document.addEventListener('deviceready', inicio, false);
     function chamadaOnesignal(){
-        //alert(device.platform);
-       // alert(window.localStorage.getItem('id')); 
           var notificationOpenedCallback = function(jsonData) {
             //alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
             $('#dvPushTitle').html(jsonData.notification.payload.title);
@@ -56,8 +38,6 @@ var tag='';
             .endInit();
         
             window.plugins.OneSignal.getIds(function(ids) {
-              //console.log('getIds: ' + JSON.stringify(ids));
-                //alert("userId = " + ids.userId + ", pushToken = " + ids.pushToken);
                 id_push=ids.userId;
             });
             
@@ -83,6 +63,14 @@ var tag='';
         }
     }
     function verificarCadastro(){
+
+        document.addEventListener("backbutton", function (e) {
+            if($.mobile.activePage.attr( "id" )=="cadastro" || $.mobile.activePage.attr( "id" )=="logado"){
+                e.preventDefault();
+            }else {
+                navigator.app.backHistory()
+            }
+        }, false );
         var email=localStorage.getItem('email');
         $.ajax({
             url:'http://www.livemusicapp.com.br/misvivoapp/usuarios.php',
@@ -99,10 +87,12 @@ var tag='';
         }).done(function(html){
             $.mobile.loading('hide');
             if(html==0){
-                $.mobile.changePage("#cadastro");
+                //$.mobile.changePage("#cadastro");
+                $.mobile.navigate("#cadastro",{changeHash:false});
             }else{
                 window.plugins.OneSignal.sendTag("fl_autorizado", "1");
-                $.mobile.changePage("#logado");
+                //$.mobile.changePage("#logado");
+                $.mobile.navigate("#logado",{changeHash:false});
             }
         });
     }
@@ -121,9 +111,13 @@ var tag='';
                 email: email,
                 fl_autorizado:0,
                 idPush: id_push
-                }
+                },
+            beforeSend: function() {
+                $.mobile.loading('show', {theme:"b"});
+            },
         }).done(function(html) {
             navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){
+                $.mobile.loading('hide');
                 localStorage.setItem('email',email);
                 localStorage.setItem('idPush',idPush);
                 window.plugins.OneSignal.sendTag("fl_autorizado", "0");
@@ -149,27 +143,19 @@ var tag='';
                 idPush: id_push
                 }
         }).done(function(html) {
-            navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', function(){
-                localStorage.setItem('email',email);
-                localStorage.setItem('idPush',idPush);
-                window.plugins.OneSignal.sendTag("fl_autorizado", "0");
-                //window.plugins.OneSignal.sendTag("email", email);
-                verificarCadastro();
-            }, 'Mis Vivo App', 'OK');
+            navigator.notification.alert('Cadastro efetuado com sucesso! Em breve seu cadastro será liberado.', null, 'Mis Vivo App', 'OK');
+            localStorage.setItem('email',email);
+            localStorage.setItem('idPush',idPush);
+            window.plugins.OneSignal.sendTag("fl_autorizado", "0");
+            //window.plugins.OneSignal.sendTag("email", email);
+            verificarCadastro();
         });
     }
     function setTag(item,valor){
         window.plugins.OneSignal.sendTag(item, valor);
     }
-    function getTag(item){
-        //var t=JSON.parse(tag);
-        //alert(t[item]);
-    }
     function loadTagsPush(){
         window.plugins.OneSignal.getTags(function(tags) {
-          //tags=JSON.stringify(tags);
-          //loadTagsPush();
-          //alert(tags.length);
             $.ajax({
               url: "http://www.livemusicapp.com.br/misvivoapp/itens.php",
               dataType: "html",
@@ -184,9 +170,7 @@ var tag='';
                 for(var i=0;i<arr.length;i++){
                     if(arr[i]!='fl_autorizado'){
                         var valor=eval('tags.' + arr[i]);
-                        //alert(arr[i] + '----->' + valor);
                         $('#' + arr[i]).val(valor).change();
-                       
                     }
                 }
             });
@@ -195,7 +179,7 @@ var tag='';
 </script>
     
 
-    <div data-role="page" id="load" changeHash="false">
+    <!--<div data-role="page" id="load" changeHash="false">
         <header data-role="header" data-position="fixed" data-theme="b"></header>
         <div data-role="content">
             <h3>
@@ -204,7 +188,7 @@ var tag='';
                 </div>
             </h3>
         </div>
-    </div>
+    </div>-->
 
     <div data-role="page" id="ExibirPush">
         <header data-role="header" data-position="fixed" data-theme="b"></header>
