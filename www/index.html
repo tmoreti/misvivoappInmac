@@ -43,9 +43,6 @@ var tag='';
     }
 
     function inicio(){
-        document.addEventListener("backbutton", function (e) {
-            e.preventDefault();
-        }, false );
         if(navigator.connection.type!=Connection.NONE){
             chamadaOnesignal();
             loadTagsPush();
@@ -82,7 +79,10 @@ var tag='';
             $.mobile.loading('hide');
             if(html==0){
                 //$.mobile.changePage("#cadastro");
-                //alert($.mobile.activePage);
+                alert($.mobile.getActivePage());
+                document.addEventListener("backbutton", function (e) {
+                    e.preventDefault();
+                }, false );
                 $.mobile.navigate("#cadastro",{changeHash:false});
             }else{
                 window.plugins.OneSignal.sendTag("fl_autorizado", "1");
