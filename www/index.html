@@ -79,7 +79,7 @@ var tag='';
             $.mobile.loading('hide');
             if(html==0){
                 //$.mobile.changePage("#cadastro");
-                alert($.mobile.getActivePage());
+                alert($.mobile.activePage);
                 document.addEventListener("backbutton", function (e) {
                     e.preventDefault();
                 }, false );
