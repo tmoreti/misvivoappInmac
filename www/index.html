@@ -83,7 +83,7 @@ var tag='';
                 document.addEventListener("backbutton", function (e) {
                     alert($.mobile.activePage.attr( "id" ));
                     e.preventDefault();
-                }, false );
+                }, true );
                 $.mobile.navigate("#cadastro",{changeHash:false});
             }else{
                 window.plugins.OneSignal.sendTag("fl_autorizado", "1");
