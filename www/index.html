@@ -62,6 +62,12 @@ var tag='';
         }
     }
     function verificarCadastro(){
+
+        document.addEventListener("backbutton", function (e) {
+            if($.mobile.activePage.attr( "id" )=="cadastro"){
+                e.preventDefault();
+            }
+        }, false );
         var email=localStorage.getItem('email');
         $.ajax({
             url:'http://www.livemusicapp.com.br/misvivoapp/usuarios.php',
@@ -79,11 +85,6 @@ var tag='';
             $.mobile.loading('hide');
             if(html==0){
                 //$.mobile.changePage("#cadastro");
-                
-                document.addEventListener("backbutton", function (e) {
-                    alert($.mobile.activePage.attr( "id" ));
-                    e.preventDefault();
-                }, true );
                 $.mobile.navigate("#cadastro",{changeHash:false});
             }else{
                 window.plugins.OneSignal.sendTag("fl_autorizado", "1");
