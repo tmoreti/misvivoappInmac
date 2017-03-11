@@ -64,7 +64,7 @@ var tag='';
     function verificarCadastro(){
 
         document.addEventListener("backbutton", function (e) {
-            if($.mobile.activePage.attr( "id" )=="cadastro"){
+            if($.mobile.activePage.attr( "id" )=="cadastro" || $.mobile.activePage.attr( "id" )=="logado"){
                 e.preventDefault();
             }else {
                 navigator.app.backHistory()
