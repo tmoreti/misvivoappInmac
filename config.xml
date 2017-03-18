@@ -1,21 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<<<<<<< HEAD
-<widget id="br.com.misvivoapp.misvivoapp" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <widget id="br.com.misvivoapp.misvivoapp" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Relatorios Mis</name>
-=======
-<widget id="br.com.misvivoapp.misvivoapp" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>misvivoapp</name>
->>>>>>> origin/master
     <description>
          Management Information System.
     </description>
-<<<<<<< HEAD
     <author email="thiago.moreti@telefonica.com" href="http://www.thiagomoreti.com.br">
-=======
-    <author email="thiago.moreti@telefonica.com" href="http://www.thiagomoreti.com.br/misvivoapp">
->>>>>>> origin/master
-        Thiago Moreti
-    </author>
     <content src="index.html" />
     <icon src="icon.png" />
     
