@@ -8,72 +8,72 @@
     },
     "installed_plugins": {
         "cordova-plugin-battery-status": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-camera": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-contacts": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-device-motion": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-device-orientation": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-globalization": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-media": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-media-capture": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-vibration": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "onesignal-cordova-plugin": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         },
         "cordova-plugin-file": {
-            "PACKAGE_NAME": "br.com.misvivoapp"
+            "PACKAGE_NAME": "br.com.misvivoapp.misvivoapp"
         }
     }
 }
